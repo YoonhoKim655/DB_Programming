@@ -1,0 +1,11 @@
+SELECT City, Store
+FROM ITEM
+GROUP BY City, Store;
+
+City                                Store                                             
+----------------------------------- --------------------------------------------------
+Manila                              Eastern Treasures                                 
+Singapore                           Eastern Sales                                     
+Singapore                           Jade Antiques                                     
+
+(3°³ Çà Àû¿ëµÊ)

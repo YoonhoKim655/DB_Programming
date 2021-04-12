@@ -1,0 +1,101 @@
+SQL> CREATE OR REPLACE PROCEDURE InsertEnroll(sStudentId IN VARCHAR2,
+  2  sCourseId IN VARCHAR2,
+  3  nCourseIdNo IN NUMBER,
+  4  result OUT VARCHAR2)
+  5  IS
+  6  too_many_sumCourseUnit EXCEPTION;
+  7  too_many_courses EXCEPTION;
+  8  too_many_students EXCEPTION;
+  9  duplicate_time EXCEPTION;
+ 10  nYear NUMBER;
+ 11  nSemester NUMBER;
+ 12  nSumCourseUnit NUMBER;
+ 13  nCourseUnit NUMBER;
+ 14  nCnt NUMBER;
+ 15  nTeachMax NUMBER;
+ 16  BEGIN
+ 17  result := '';
+ 18  DBMS_OUTPUT.PUT_LINE('#');
+ 19  DBMS_OUTPUT.PUT_LINE(sStudentId || '님의 과목번호 ' || sCourseId || ', 분반 ' || TO_CHAR(nCourseIdNo) || '의 수강 등록을 요청하였습니다. ');
+ 20  nYear := Date2EnrollYear(SYSDATE);
+ 21  nSemester := Date2EnrollSemester(SYSDATE);
+ 22  
+ 23  SELECT SUM(c.c_unit)
+ 24  INTO nSumCourseUnit
+ 25  FROM course c, enroll e
+ 26  WHERE e.s_id = sStudentId and e.e_year = nYear and e.e_semester = nSemester
+ 27  and e.c_id = c.c_id and e.c_id_no = c.c_id_no;
+ 28  
+ 29  SELECT c_unit
+ 30  INTO nCourseUnit
+ 31  FROM course
+ 32  WHERE c_id = sCourseId and c_id_no = nCourseIdNo;
+ 33  
+ 34  IF(nSumCourseUnit + nCourseUnit > 18) THEN
+ 35  RAISE too_many_sumCourseUnit;
+ 36  END IF;
+ 37  
+ 38  SELECT COUNT(*)
+ 39  INTO nCnt
+ 40  FROM enroll
+ 41  WHERE s_id = sStudentId and c_id = sCourseId;
+ 42  
+ 43  IF(nCnt > 0) THEN
+ 44  RAISE too_many_courses;
+ 45  END IF;
+ 46  
+ 47  SELECT t_max
+ 48  INTO nTeachMax
+ 49  FROM teach
+ 50  WHERE t_year = nYear and t_semester = nSemester and c_id = sCourseId
+ 51  and c_id_no = nCourseIdNo;
+ 52  
+ 53  SELECT COUNT(*)
+ 54  INTO nCnt
+ 55  FROM enroll
+ 56  WHERE e_year = nYear and e_semester = nSemester
+ 57  and c_id = sCourseId and c_id_no = nCourseIdNo;
+ 58  IF(nCnt >= nTeachMax) THEN
+ 59  RAISE too_many_students;
+ 60  END IF;
+ 61  
+ 62  SELECT COUNT(*)
+ 63  INTO nCnt
+ 64  FROM (SELECT t_time
+ 65  FROM teach
+ 66  WHERE t_year = nYear and t_semester = nSemester
+ 67  and c_id = sCourseId and c_id_no = nCourseIdNo
+ 68  INTERSECT
+ 69  SELECT t.t_time
+ 70  FROM teach t, enroll e
+ 71  WHERE e.s_id = sStudentId and e.e_year = nYear
+ 72  and e.e_semester = nSemester and t.t_year = nYear
+ 73  and t.t_semester = nSemester and e.c_id = t.c_id
+ 74  and e.c_id_no = t.c_id_no);
+ 75  IF(nCnt > 0) THEN
+ 76  RAISE duplicate_time;
+ 77  END IF;
+ 78  
+ 79  INSERT INTO enroll(S_ID, C_ID, C_ID_NO, E_YEAR, E_SEMESTER)
+ 80  VALUES (sStudentId, sCourseId, nCourseIdNo, nYear, nSemester);
+ 81  COMMIT;
+ 82  result := '수강신청 등록이 완료되었습니다.';
+ 83  
+ 84  EXCEPTION
+ 85  WHEN too_many_sumCourseUnit THEN
+ 86  result := '최대학점을 초과하였습니다.';
+ 87  WHEN too_many_courses THEN
+ 88  result := '이미 등록된 과목을 신청하였습니다.';
+ 89  WHEN too_many_students THEN
+ 90  result := '수강신청 인원이 초과되어 등록이 불가능합니다.';
+ 91  WHEN duplicate_time THEN
+ 92  result := '이미 등록된 과목 중 중복되는시간이 존재합니다.';
+ 93  WHEN OTHERS THEN
+ 94  ROLLBACK;
+ 95  result := SQLCODE;
+ 96  END;
+ 97  /
+
+프로시저가 생성되었습니다.
+
+SQL> spool off

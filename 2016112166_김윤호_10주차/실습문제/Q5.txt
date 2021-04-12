@@ -1,0 +1,100 @@
+SQL> DECLARE
+  2  TYPE ename_table IS TABLE OF emp.ename%TYPE INDEX BY BINARY_INTEGER;
+  3  TYPE sal_table IS TABLE OF emp.sal%TYPE INDEX BY BINARY_INTEGER;
+  4  ename_tab ename_table;
+  5  sal_tab sal_table;
+  6  i BINARY_INTEGER := 0;
+  7  BEGIN
+  8  FOR emp_list IN(SELECT sal, ename FROM emp WHERE deptno = 10) LOOP
+  9  i := i + 1;
+ 10  sal_tab(i) := emp_list.sal;
+ 11  ename_tab(i) := emp_list.ename;
+ 12  UPDATE emp
+ 13  SET sal =sal_tab(i)+(sal_tab(i) * (10/100))
+ 14  WHERE ename = ename_tab(i);
+ 15  END LOOP;
+ 16  COMMIT;
+ 17  END;
+ 18  /
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM       
+---------- ---------- --------- ---------- -------- ---------- ----------       
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 80/12/17        800                  
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 81/02/20       1600        300       
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 81/02/22       1250        500       
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM       
+---------- ---------- --------- ---------- -------- ---------- ----------       
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 81/04/02       2975                  
+        20                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 81/09/28       1250       1400       
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 81/05/01       2850                  
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM       
+---------- ---------- --------- ---------- -------- ---------- ----------       
+    DEPTNO                                                                      
+----------                                                                      
+      7782 CLARK      MANAGER         7839 81/06/09       2695                  
+        10                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 87/01/13       3000                  
+        20                                                                      
+                                                                                
+      7839 KING       PRESIDENT            81/11/17       5500                  
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM       
+---------- ---------- --------- ---------- -------- ---------- ----------       
+    DEPTNO                                                                      
+----------                                                                      
+      7844 TURNER     SALESMAN        7698 81/09/08       1500          0       
+        30                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 87/10/23       1100                  
+        20                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 81/12/03        950                  
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM       
+---------- ---------- --------- ---------- -------- ---------- ----------       
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 81/12/03       3000                  
+        20                                                                      
+                                                                                
+      7934 MILLER     CLERK           7782 82/01/23       1430                  
+        10                                                                      
+                                                                                
+      7370 JASON      ANALYST         7369 80/12/17        900                  
+        20                                                                      
+                                                                                
+
+15 개의 행이 선택되었습니다.
+
+SQL> COMMIT;
+
+커밋이 완료되었습니다.
+
+SQL> spool off;

@@ -1,0 +1,22 @@
+SQL> /*북타입이 location을 결정하게 되는 이행함수 종속이 되므로 북 릴레이션을 제목과 타입으로 분해를 해주었습니다.*/
+
+SQL> select Book_type
+  2  from book_titles
+  3  where Book_type not in (select B_title.Book_type
+  4  from book_titles B_title, book_types B_type
+  5  where B_title.Book_type = B_type.Book_type);
+
+선택된 레코드가 없습니다.
+
+SQL> 
+SQL> select Book_title, Authorname, Book_type, Location, Publisher
+  2  from BOOK_TITLES NATURAL JOIN BOOK_TYPES;
+
+BOOK_TITLE                AUTHORNAME                BOOK_TYPE       LOCAT PUBLISHER                 
+------------------------- ------------------------- --------------- ----- ------------------------- 
+Cinderella                Daisy Fisher              Fairy tale      A1    Disney                    
+The little Mermaid        Hans Christian Andersen   Fairy tale      A1    C.A. Reitzel              
+Harry Potter              J. K. Rowling             Fantasy novel   B1    Bloomsbury Publishing     
+The Lord of the Rings     J. R. R. Tolkien          Fantasy novel   B1    Harper Collins            
+
+SQL> spool off

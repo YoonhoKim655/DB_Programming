@@ -1,0 +1,17 @@
+SQL> select * from book_titles;
+
+BOOK_TITLE                AUTHORNAME                BOOK_TYPE       PUBLISHER                       
+------------------------- ------------------------- --------------- -------------------------       
+Cinderella                Daisy Fisher              Fairy tale      Disney                          
+The little Mermaid        Hans Christian Andersen   Fairy tale      C.A. Reitzel                    
+Harry Potter              J. K. Rowling             Fantasy novel   Bloomsbury Publishing           
+The Lord of the Rings     J. R. R. Tolkien          Fantasy novel   Harper Collins                  
+
+SQL> select * from book_types;
+
+BOOK_TYPE       LOCAT                                                                               
+--------------- -----                                                                               
+Fairy tale      A1                                                                                  
+Fantasy novel   B1                                                                                  
+
+SQL> spool off

@@ -1,0 +1,28 @@
+SQL> DECLARE
+  2  v_emp emp%ROWTYPE;
+  3  BEGIN
+  4  SELECT empno, sal
+  5  INTO v_emp.empno, v_emp.sal
+  6  FROM emp
+  7  WHERE empno = 7698;
+  8  
+  9  IF(v_emp.sal >= 700 and v_emp.sal <= 1200) THEN
+ 10  DBMS_OUTPUT.PUT_LINE('1등급');
+ 11  ELSIF(v_emp.sal >= 1201 and v_emp.sal <= 1400) THEN
+ 12  DBMS_OUTPUT.PUT_LINE('2등급');
+ 13  ELSIF(v_emp.sal >= 1401 and v_emp.sal <= 2000) THEN
+ 14  DBMS_OUTPUT.PUT_LINE('3등급');
+ 15  ELSIF(v_emp.sal >= 2001 and v_emp.sal <= 3000) THEN
+ 16  DBMS_OUTPUT.PUT_LINE('4등급');
+ 17  ELSIF(v_emp.sal >= 3001 and v_emp.sal <= 9999) THEN
+ 18  DBMS_OUTPUT.PUT_LINE('5등급');
+ 19  ELSE
+ 20  DBMS_OUTPUT.PUT_LINE('ERROR');
+ 21  END IF;
+ 22  END;
+ 23  /
+4등급                                                                           
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

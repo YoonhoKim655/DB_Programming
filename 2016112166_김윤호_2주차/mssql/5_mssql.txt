@@ -1,0 +1,8 @@
+SELECT MAX(InsuredValue) AS MaxInsuredValue,MIN(InsuredValue) AS MinInsuredValue,AVG(InsuredValue) AS AvgInsuredValue
+FROM SHIPMENT;
+
+MaxInsuredValue MinInsuredValue AvgInsuredValue                         
+--------------- --------------- ----------------------------------------
+       25000.00        12000.00                             17916.666666
+
+(1°³ Çà Àû¿ëµÊ)

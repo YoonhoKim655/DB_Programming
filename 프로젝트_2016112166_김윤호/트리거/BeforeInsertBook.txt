@@ -1,0 +1,19 @@
+CREATE OR REPLACE TRIGGER BeforeInsertBook
+BEFORE INSERT ON book
+FOR EACH ROW
+DECLARE
+duplicate_b_num EXCEPTION;
+nDuplicate NUMBER;
+BEGIN
+SELECT COUNT(*)
+INTO nDuplicate
+FROM BOOK
+WHERE b_num = :new.b_num;
+IF(nDuplicate > 0) THEN
+RAISE duplicate_b_num;
+END IF;
+EXCEPTION
+WHEN duplicate_b_num THEN
+RAISE_APPLICATION_ERROR(-20006, '같은 책 번호가 이미 존재합니다..');
+END;
+/

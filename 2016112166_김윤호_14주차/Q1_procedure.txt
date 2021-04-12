@@ -1,0 +1,35 @@
+CREATE OR REPLACE PROCEDURE InformClass(sCourseId IN VARCHAR2,
+nCourseIdNo IN NUMBER,
+result OUT VARCHAR2)
+IS
+
+nYear NUMBER;
+nSemester NUMBER;
+nCnt NUMBER;
+nTeachMax NUMBER;
+nAble NUMBER;
+
+BEGIN
+result := '';
+
+nYear := Date2EnrollYear(SYSDATE);
+nSemester := Date2EnrollSemester(SYSDATE);
+
+SELECT t_max
+INTO nTeachMax
+FROM teach
+WHERE t_year = nYear and t_semester = nSemester and c_id = sCourseId
+and c_id_no = nCourseIdNo;
+
+SELECT COUNT(*)
+INTO nCnt
+FROM enroll
+WHERE e_year = nYear and e_semester = nSemester
+and c_id = sCourseId and c_id_no = nCourseIdNo;
+
+nAble := nTeachMax - nCnt;
+
+result := '모집인원은 '|| TO_CHAR(nTeachMax) || '명 이며, 현재 수강 신청을 할 수 있는 인원은 '|| TO_CHAR(nAble) || '명 입니다.';
+
+END;
+/

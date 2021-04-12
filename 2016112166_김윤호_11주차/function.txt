@@ -1,0 +1,41 @@
+SQL> CREATE OR REPLACE FUNCTION FC_update_sal
+  2  (v_empno IN NUMBER)
+  3  RETURN NUMBER
+  4  IS
+  5  v_sal emp.sal%TYPE;
+  6  BEGIN
+  7  UPDATE emp
+  8  SET sal = sal * 1.1
+  9  WHERE empno = v_empno;
+ 10  
+ 11  COMMIT;
+ 12  
+ 13  SELECT sal
+ 14  INTO v_sal
+ 15  FROM emp
+ 16  WHERE empno = v_empno;
+ 17  RETURN v_sal;
+ 18  END;
+ 19  /
+
+함수가 생성되었습니다.
+
+SQL> select sal from emp
+  2  where empno = 7900;
+
+       SAL                                                                      
+----------                                                                      
+      1045                                                                      
+
+SQL> VAR salary NUMBER;
+SQL> EXECUTE :salary := FC_update_sal(7900);
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> PRINT salary;
+
+    SALARY                                                                      
+----------                                                                      
+    1149.5                                                                      
+
+SQL> spool off;

@@ -1,0 +1,29 @@
+CREATE TABLE ITEM
+(ItemID INT NOT NULL,
+Description VarChar(25) NOT NULL,
+PurchaseDate DATE NOT NULL,
+Store Char(50) NOT NULL,
+City Char(35) NOT NULL,
+Quantity INT NOT NULL,
+LocalCurrencyAmount DECIMAL(18,2) NOT NULL,
+ExchangeRate DECIMAL(12,6) NOT NULL,
+PRIMARY KEY (ItemID)); 
+SELECT
+COLUMN_NAME, IS_NULLABLE, DATA_TYPE
+FROM
+INFORMATION_SCHEMA.COLUMNS
+WHERE
+TABLE_NAME = 'ITEM'
+
+COLUMN_NAME                                                                                                                      IS_NULLABLE DATA_TYPE                                                                                                                       
+-------------------------------------------------------------------------------------------------------------------------------- ----------- --------------------------------------------------------------------------------------------------------------------------------
+ItemID                                                                                                                           NO          int                                                                                                                             
+Description                                                                                                                      NO          varchar                                                                                                                         
+PurchaseDate                                                                                                                     NO          date                                                                                                                            
+Store                                                                                                                            NO          char                                                                                                                            
+City                                                                                                                             NO          char                                                                                                                            
+Quantity                                                                                                                         NO          int                                                                                                                             
+LocalCurrencyAmount                                                                                                              NO          decimal                                                                                                                         
+ExchangeRate                                                                                                                     NO          decimal                                                                                                                         
+
+(8°³ Çà Àû¿ëµÊ)

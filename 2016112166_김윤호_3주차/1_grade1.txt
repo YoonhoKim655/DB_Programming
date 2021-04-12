@@ -1,0 +1,26 @@
+SQL> CREATE TABLE STUDENT_GRADE1(
+  2       Sid VARCHAR(10) NOT NULL,
+  3       Cid VARCHAR(10) NOT NULL,
+  4       Grade VARCHAR(5),
+  5       PRIMARY KEY(Sid, Cid));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO STUDENT_GRADE1 VALUES('2016127059','C100','A');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT_GRADE1 VALUES('2016127060','C200','B');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT_GRADE1 VALUES('2016127061','C200','B');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT_GRADE1 VALUES('2016127062','C300','C');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

@@ -1,0 +1,19 @@
+SQL> DECLARE
+  2  sMonth CHAR(2);
+  3  BEGIN
+  4  SELECT TO_CHAR(SYSDATE, 'MM')
+  5  INTO sMonth
+  6  FROM DUAL;
+  7  
+  8  IF(sMonth >= '03' and sMonth <= '08') THEN
+  9  DBMS_OUTPUT.PUT_LINE('1학기');
+ 10  ELSE
+ 11  DBMS_OUTPUT.PUT_LINE('2학기');
+ 12  END IF;
+ 13  END;
+ 14  /
+2학기                                                                           
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

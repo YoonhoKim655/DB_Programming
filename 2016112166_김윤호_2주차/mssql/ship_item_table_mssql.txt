@@ -1,0 +1,22 @@
+INSERT INTO SHIPMENT_ITEM VALUES(3, 1, 1, 15000);
+INSERT INTO SHIPMENT_ITEM VALUES(4, 1, 4, 1200);
+INSERT INTO SHIPMENT_ITEM VALUES(4, 2, 3, 9500);
+INSERT INTO SHIPMENT_ITEM VALUES(4, 3, 2, 4500);
+SELECT * FROM SHIPMENT_ITEM;
+
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+ShipmentID  ShipmentItemID ItemID      Value         
+----------- -------------- ----------- --------------
+          3              1           1       15000.00
+          4              1           4        1200.00
+          4              2           3        9500.00
+          4              3           2        4500.00
+
+(4俺 青 利侩凳)

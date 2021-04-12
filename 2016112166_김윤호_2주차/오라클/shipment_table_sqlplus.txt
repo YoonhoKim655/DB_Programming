@@ -1,0 +1,68 @@
+SQL> CREATE TABLE SHIPMENT
+  2  (ShipmentID NUMBER(10) NOT NULL,
+  3  ShipperName Char(35) NOT NULL,
+  4  ShipperInvoiceNumber NUMBER(10) NOT NULL,
+  5  DepartureDate Date NULL,
+  6  ArrivalDate Date NULL,
+  7  InsuredValue NUMBER(12,2) NOT NULL,
+  8  PRIMARY KEY (ShipmentID));
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO SHIPMENT VALUES(1,'ABC Trans-Oceanic', 2008651, to_date('2014-12-10','yyyy-mm-dd'), to_date('2015-03-15','yyyy-mm-dd'), 15000.00);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT VALUES(2,'ABC Trans-Oceanic', 2009012, to_date('2015-01-10','yyyy-mm-dd'), to_date('2015-03-20','yyyy-mm-dd'), 12000.00);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT VALUES(3,'Worldwide', 49100300, to_date('2015-05-05','yyyy-mm-dd'), to_date('2015-07-17','yyyy-mm-dd'), 20000.00);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT VALUES(4,'International', 399400, to_date('2015-06-02','yyyy-mm-dd'), to_date('2015-07-17','yyyy-mm-dd'), 17500.00 );
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT VALUES(5,'Worldwide', 84899440, to_date('2015-07-10','yyyy-mm-dd'), to_date('2015-07-18','yyyy-mm-dd'), 25000.00);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT VALUES(6,'International', 488955, to_date('2015-08-05','yyyy-mm-dd'), to_date('2015-09-11','yyyy-mm-dd'), 18000.00);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> SELECT * FROM SHIPMENT;
+
+SHIPMENTID SHIPPERNAME                         SHIPPERINVOICENUMBER DEPARTUR    
+---------- ----------------------------------- -------------------- --------    
+ARRIVALD INSUREDVALUE                                                           
+-------- ------------                                                           
+         1 ABC Trans-Oceanic                                2008651 14/12/10    
+15/03/15        15000                                                           
+                                                                                
+         2 ABC Trans-Oceanic                                2009012 15/01/10    
+15/03/20        12000                                                           
+                                                                                
+         3 Worldwide                                       49100300 15/05/05    
+15/07/17        20000                                                           
+                                                                                
+
+SHIPMENTID SHIPPERNAME                         SHIPPERINVOICENUMBER DEPARTUR    
+---------- ----------------------------------- -------------------- --------    
+ARRIVALD INSUREDVALUE                                                           
+-------- ------------                                                           
+         4 International                                     399400 15/06/02    
+15/07/17        17500                                                           
+                                                                                
+         5 Worldwide                                       84899440 15/07/10    
+15/07/18        25000                                                           
+                                                                                
+         6 International                                     488955 15/08/05    
+15/09/11        18000                                                           
+                                                                                
+
+6 개의 행이 선택되었습니다.
+
+SQL> spool off;

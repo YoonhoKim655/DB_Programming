@@ -1,0 +1,46 @@
+CREATE OR REPLACE PROCEDURE DeleteBook(bBookNum IN NUMBER,
+result OUT VARCHAR2)
+IS
+Rented EXCEPTION;
+Not_exist EXCEPTION;
+
+nCntRent NUMBER;
+nCnt NUMBER;
+
+BEGIN
+result := '';
+DBMS_OUTPUT.PUT_LINE('#');
+DBMS_OUTPUT.PUT_LINE('책 번호 ' ||  TO_CHAR(bBookNum) || '을 삭제를 하시겠습니까?. ');
+
+SELECT COUNT(*)
+INTO nCntRent
+FROM rental r
+WHERE r.b_num = bBookNum;
+
+IF(nCntRent > 0) THEN
+RAISE Rented;
+END IF;
+
+SELECT COUNT(*)
+INTO nCnt
+FROM book
+WHERE B_NUM = bBookNum;
+
+IF(nCnt < 1) THEN
+RAISE Not_exist;
+END IF;
+
+DELETE FROM book WHERE B_NUM = bBookNum;
+COMMIT;
+result := '책의 삭제가 완료되었습니다.';
+
+EXCEPTION
+WHEN Rented THEN
+result := '반납되지 않은 책이 존재 합니다.';
+WHEN Not_exist THEN
+result := '해당 책 번호는 존재하지 않습니다.';
+WHEN OTHERS THEN
+ROLLBACK;
+result := SQLCODE;
+END;
+/

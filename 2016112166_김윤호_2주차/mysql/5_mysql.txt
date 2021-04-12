@@ -1,0 +1,10 @@
+mysql> SELECT MAX(InsuredValue) AS MaxInsuredValue,MIN(InsuredValue) AS MinInsuredValue,AVG(InsuredValue) AS AvgInsuredValue
+    -> FROM SHIPMENT;
++-----------------+-----------------+-----------------+
+| MaxInsuredValue | MinInsuredValue | AvgInsuredValue |
++-----------------+-----------------+-----------------+
+|        25000.00 |        12000.00 |    17916.666667 |
++-----------------+-----------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> \t

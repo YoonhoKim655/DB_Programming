@@ -1,0 +1,22 @@
+/*후보키가 아닌 결정자가 존재하는 기존 릴레이션에서 분해하면서 Meeting date와 Employeename을 복합키로 설정을 해주는 릴레이션과 ,결정자가 슈퍼키가 아닌 employeename을 기본키로 설정을 하는 릴레이션으로 분해를 해주었습니다*/
+
+SQL> select EmployeeName
+  2  from STAFF_MEETING1
+  3  where EmployeeName not in (select SM1.EmployeeName
+  4  from STAFF_MEETING1 SM1, STAFF_MEETING2 SM2
+  5  where SM1.EmployeeName = SM2.EmployeeName);
+
+선택된 레코드가 없습니다.
+
+SQL> 
+SQL> select ProjectName, MeetingDate,EmployeeName
+  2  from STAFF_MEETING1 NATURAL JOIN STAFF_MEETING2;
+
+PROJECTNAME          MEETINGD EMPLOYEENA                                                            
+-------------------- -------- ----------                                                            
+School Project       20/04/06 홍길동                                                                
+Programming Project  20/04/06 홍길장                                                                
+Robot Project        20/07/07 홍길돌                                                                
+Basic Project        20/02/15 홍길순                                                                
+
+SQL> spool off

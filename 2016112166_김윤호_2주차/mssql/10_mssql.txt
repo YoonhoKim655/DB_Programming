@@ -1,0 +1,14 @@
+SELECT ShipperName, ShipmentID, DepartureDate
+FROM SHIPMENT
+WHERE ShipmentID IN
+(SELECT ShipmentID
+FROM SHIPMENT_ITEM
+WHERE Value >= 1000)
+ORDER BY ShipperName, DepartureDate DESC;
+
+ShipperName                         ShipmentID  DepartureDate   
+----------------------------------- ----------- ----------------
+International                                 4       2015-06-02
+Worldwide                                     3       2015-05-05
+
+(2°³ Çà Àû¿ëµÊ)

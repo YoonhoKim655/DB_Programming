@@ -1,0 +1,19 @@
+SQL> SELECT City, Store
+  2  FROM ITEM
+  3  GROUP BY City, Store;
+
+CITY                                                                            
+-----------------------------------                                             
+STORE                                                                           
+--------------------------------------------------                              
+Singapore                                                                       
+Eastern Sales                                                                   
+                                                                                
+Manila                                                                          
+Eastern Treasures                                                               
+                                                                                
+Singapore                                                                       
+Jade Antiques                                                                   
+                                                                                
+
+SQL> spool off;

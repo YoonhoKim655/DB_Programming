@@ -1,0 +1,23 @@
+SQL> select * from member1;
+
+NAME       SIBLING                                                                                  
+---------- ----------                                                                               
+Chau       Eileen                                                                                   
+Chau       Jonathan                                                                                 
+Green      Nikki                                                                                    
+Jones      Frank                                                                                    
+Jones      Fred                                                                                     
+Jones      Sally                                                                                    
+
+6 개의 행이 선택되었습니다.
+
+SQL> select * from member2;
+
+NAME       HOBBY                                                                                    
+---------- --------------------                                                                     
+Chau       Scuba diving                                                                             
+Green      Embroidery                                                                               
+Jones      Model boats                                                                              
+Jones      Scuba diving                                                                             
+
+SQL> spool off;

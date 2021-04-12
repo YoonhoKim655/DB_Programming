@@ -1,0 +1,22 @@
+SQL> select Cid
+  2  from student_grade1
+  3  where Cid not in(select SG1.Cid
+  4  from student_grade1 SG1, student_grade2 SG2
+  5  where SG1.Cid = SG2.Cid);
+
+선택된 레코드가 없습니다.
+
+SQL> 
+SQL> select Sid, Cid, Grade, Cname,Cunit
+  2  from STUDENT_GRADE1 NATURAL JOIN STUDENT_GRADE2;
+
+SID        CID        GRADE CNAME           CU                                                      
+---------- ---------- ----- --------------- --                                                      
+2016127059 C100       A     C언어           3                                                       
+2016127060 C200       B     데이터베이스    3                                                       
+2016127061 C200       B     데이터베이스    3                                                       
+2016127062 C300       C     프로그래밍      3                                                       
+
+SQL> spool off
+
+/*부분함수 종속이 존재하지 않도록 릴레이션을 FD2에 따라서 2개의 릴레이션으로 나누었습니다.*/

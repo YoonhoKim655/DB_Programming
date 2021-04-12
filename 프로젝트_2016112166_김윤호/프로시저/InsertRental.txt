@@ -1,0 +1,83 @@
+/*대여 입력*/
+CREATE OR REPLACE PROCEDURE InsertRental(sStaffId IN VARCHAR2,
+nBookNum IN NUMBER,
+result OUT VARCHAR2)
+IS
+too_many_Rent EXCEPTION;
+too_many_Overdue EXCEPTION;
+too_many_Rented EXCEPTION;
+duplicate_Rented EXCEPTION;
+
+nCntRent NUMBER;
+nCntRented NUMBER;
+nCnt NUMBER;
+nCntBook NUMBER;
+nDuplicate NUMBER;
+
+BEGIN
+result := '';
+DBMS_OUTPUT.PUT_LINE('#');
+DBMS_OUTPUT.PUT_LINE(sStaffId || '님이 책 번호 ' ||  TO_CHAR(nBookNum) || '의 대여를 요청하였습니다. ');
+
+SELECT COUNT(*)
+INTO nDuplicate
+FROM rental
+WHERE s_id = sStaffId and b_num = nBookNum;
+
+IF(nDuplicate > 0) THEN
+RAISE duplicate_Rented;
+END IF;
+
+SELECT COUNT(*)
+INTO nCntRent
+FROM book b, rental r
+WHERE r.s_id = sStaffId and r.b_num = b.b_num;
+
+IF(nCntRent >= 5) THEN
+RAISE too_many_Rent;
+END IF;
+
+SELECT s_overdue
+INTO nCnt
+FROM staff
+WHERE s_id = sStaffId;
+
+IF(nCnt > 5) THEN
+RAISE too_many_Overdue;
+END IF;
+
+SELECT COUNT(*)
+INTO nCntRented
+FROM rental r
+WHERE r.b_num = nBookNum;
+
+SELECT b_quantity
+INTO nCntBook
+FROM book b
+WHERE b.b_num = nBookNum;
+
+IF(nCntRented >= nCntBook) THEN
+RAISE too_many_Rented;
+END IF;
+
+INSERT INTO rental(S_ID, B_NUM, R_START, R_END)
+VALUES (sStaffId, nBookNum, SYSDATE, SYSDATE+7);
+
+update book set b_quantity = nCntBook - 1 where b_num = nBookNum;
+COMMIT;
+result := '대여신청이 완료되었습니다.';
+
+EXCEPTION
+WHEN duplicate_Rented THEN
+result := '이미 대여한 책입니다.';
+WHEN too_many_Rent THEN
+result := '더 이상 빌릴 수 없습니다.';
+WHEN too_many_Overdue THEN
+result := '너무 많은 연체로 인해 대여가 불가합니다.';
+WHEN too_many_Rented THEN
+result := '남아있는 책이 없습니다.';
+WHEN OTHERS THEN
+ROLLBACK;
+result := SQLCODE;
+END;
+/

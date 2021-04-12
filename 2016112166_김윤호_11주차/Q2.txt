@@ -1,0 +1,30 @@
+SQL> DECLARE
+  2  vs_columns VARCHAR2(100);
+  3  vs_intro VARCHAR2(100);
+  4  CURSOR dept_list IS
+  5  SELECT *
+  6  FROM dept;
+  7  v_dept dept%ROWTYPE;
+  8  BEGIN
+  9  DBMS_OUTPUT.PUT_LINE('부서번호 부서명           위  치');
+ 10  DBMS_OUTPUT.PUT_LINE('-------- -----           -------');
+ 11  OPEN dept_list;
+ 12  LOOP
+ 13  FETCH dept_list INTO v_dept;
+ 14  EXIT WHEN dept_list%NOTFOUND;
+ 15  vs_columns := RPAD(v_dept.deptno, 10) || RPAD(v_dept.dname, 15) || RPAD(v_dept.loc, 10);
+ 16  DBMS_OUTPUT.PUT_LINE(vs_columns);
+ 17  END LOOP;
+ 18  CLOSE dept_list;
+ 19  END;
+ 20  /
+부서번호 부서명           위  치                                                
+-------- -----           -------                                                
+10        sales          NEW YORK                                               
+20        RESEARCH       DALLAS                                                 
+30        SALES          CHICAGO                                                
+40        OPERATIONS     BOSTON                                                 
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

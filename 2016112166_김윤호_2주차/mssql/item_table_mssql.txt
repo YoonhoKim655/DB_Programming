@@ -1,0 +1,23 @@
+INSERT INTO ITEM VALUES(1,'QE Dining Set', '2015-04-07', 'Eastern Treasures', 'Manila', 2, 403405, 0.01774);
+INSERT INTO ITEM VALUES(2,'Willow Serving Dishes', '2015-07-15', 'Jade Antiques', 'Singapore', 75, 102, 0.5903);
+INSERT INTO ITEM VALUES(3,'Large Bureau', '2015-07-17', 'Eastern Sales', 'Singapore', 8, 2000, 0.5903);
+INSERT INTO ITEM VALUES(4,'Brass Lamps', '2015-07-20', 'Jade Antiques', 'Singapore', 40, 50, 0.5903);
+
+SELECT * FROM ITEM;
+
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+ItemID      Description               PurchaseDate     Store                                              City                                Quantity    LocalCurrencyAmount  ExchangeRate  
+----------- ------------------------- ---------------- -------------------------------------------------- ----------------------------------- ----------- -------------------- --------------
+          1 QE Dining Set                   2015-04-07 Eastern Treasures                                  Manila                                        2            403405.00        .017740
+          2 Willow Serving Dishes           2015-07-15 Jade Antiques                                      Singapore                                    75               102.00        .590300
+          3 Large Bureau                    2015-07-17 Eastern Sales                                      Singapore                                     8              2000.00        .590300
+          4 Brass Lamps                     2015-07-20 Jade Antiques                                      Singapore                                    40                50.00        .590300
+
+(4俺 青 利侩凳)

@@ -1,0 +1,25 @@
+SQL> CREATE TABLE MEMBER2(
+  2       Name VARCHAR(10) NOT NULL,
+  3       Hobby VARCHAR(20) NOT NULL,
+  4       PRIMARY KEY(Name, Hobby));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO MEMBER2 VALUES('Chau','Scuba diving');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER2 VALUES('Green','Embroidery');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER2 VALUES('Jones','Model boats');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER2 VALUES('Jones','Scuba diving');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

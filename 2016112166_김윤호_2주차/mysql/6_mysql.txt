@@ -1,0 +1,10 @@
+mysql> SELECT COUNT(*) AS NumberOfShipments
+    -> FROM SHIPMENT;
++-------------------+
+| NumberOfShipments |
++-------------------+
+|                 6 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> \t

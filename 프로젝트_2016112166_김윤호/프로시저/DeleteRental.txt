@@ -1,0 +1,15 @@
+CREATE OR REPLACE PROCEDURE DeleteRental(sStaffId IN VARCHAR2,
+bB_Num IN NUMBER,
+result OUT VARCHAR2)
+IS
+
+BEGIN
+result := '';
+DBMS_OUTPUT.PUT_LINE('#');
+DBMS_OUTPUT.PUT_LINE('회원 번호 ' ||  sStaffId || '가 대여한 책 번호' || TO_CHAR(bB_Num) || '을 삭제를 하시겠습니까?. ');
+
+DELETE FROM rental WHERE s_id = sStaffId AND b_num = bB_Num;
+COMMIT;
+result := '해당 회원의 대여한 책 정보의 삭제가 완료되었습니다.';
+END;
+/

@@ -1,0 +1,9 @@
+SQL> BEGIN
+  2  DBMS_OUTPUT.PUT_LINE('HELLO');
+  3  END;
+  4  /
+HELLO                                                                           
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

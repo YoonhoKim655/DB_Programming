@@ -1,0 +1,16 @@
+SELECT ShipperName, SHIPMENT.ShipmentID, DepartureDate, Value
+FROM SHIPMENT, SHIPMENT_ITEM
+WHERE SHIPMENT.ShipmentID = SHIPMENT_ITEM.ShipmentID
+AND ItemID IN
+(SELECT ItemID
+FROM ITEM
+WHERE City = 'Singapore')
+ORDER BY ShipperName, DepartureDate DESC;
+
+ShipperName                         ShipmentID  DepartureDate    Value         
+----------------------------------- ----------- ---------------- --------------
+International                                 4       2015-06-02        1200.00
+International                                 4       2015-06-02        9500.00
+International                                 4       2015-06-02        4500.00
+
+(3°³ Çà Àû¿ëµÊ)

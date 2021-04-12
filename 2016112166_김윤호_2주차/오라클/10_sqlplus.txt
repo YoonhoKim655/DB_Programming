@@ -1,0 +1,14 @@
+SQL> SELECT ShipperName, ShipmentID, DepartureDate
+  2  FROM SHIPMENT
+  3  WHERE ShipmentID IN
+  4  (SELECT ShipmentID
+  5  FROM SHIPMENT_ITEM
+  6  WHERE Value >= 1000)
+  7  ORDER BY ShipperName, DepartureDate DESC;
+
+SHIPPERNAME                         SHIPMENTID DEPARTUR                         
+----------------------------------- ---------- --------                         
+International                                4 15/06/02                         
+Worldwide                                    3 15/05/05                         
+
+SQL> spool off;

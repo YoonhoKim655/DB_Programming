@@ -1,0 +1,32 @@
+SQL> DECLARE
+  2  TYPE empno_table IS TABLE OF emp.empno%TYPE INDEX BY BINARY_INTEGER;
+  3  TYPE ename_table IS TABLE OF emp.ename%TYPE INDEX BY BINARY_INTEGER;
+  4  empno_tab empno_table;
+  5  ename_tab ename_table;
+  6  i BINARY_INTEGER := 0;
+  7  BEGIN
+  8  FOR emp_list IN(SELECT empno, ename FROM emp WHERE deptno = 20) LOOP
+  9  i := i +1;
+ 10  empno_tab(i) := emp_list.empno;
+ 11  ename_tab(i) := emp_list.ename;
+ 12  DBMS_OUTPUT.PUT_LINE('번호 : ' ||empno_tab(i));
+ 13  DBMS_OUTPUT.PUT_LINE('번호 : ' ||ename_tab(i));
+ 14  END LOOP;
+ 15  END;
+ 16  /
+번호 : 7369                                                                     
+번호 : SMITH                                                                    
+번호 : 7566                                                                     
+번호 : JONES                                                                    
+번호 : 7788                                                                     
+번호 : SCOTT                                                                    
+번호 : 7876                                                                     
+번호 : ADAMS                                                                    
+번호 : 7902                                                                     
+번호 : FORD                                                                     
+번호 : 7370                                                                     
+번호 : JASON                                                                    
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

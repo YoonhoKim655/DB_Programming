@@ -1,0 +1,13 @@
+mysql> INSERT INTO SHIPMENT_ITEM VALUES(3, 1, 1, 15000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO SHIPMENT_ITEM VALUES(4, 1, 4, 1200);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO SHIPMENT_ITEM VALUES(4, 2, 3, 9500);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO SHIPMENT_ITEM VALUES(4, 3, 2, 4500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> \t

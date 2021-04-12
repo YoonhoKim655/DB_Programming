@@ -1,0 +1,50 @@
+SQL> DROP TABLE BOOK CASCADE CONSTRAINTS PURGE;
+DROP TABLE BOOK CASCADE CONSTRAINTS PURGE
+           *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> DROP TABLE BOOK1_3NF CASCADE CONSTRAINTS PURGE;
+DROP TABLE BOOK1_3NF CASCADE CONSTRAINTS PURGE
+           *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> DROP TABLE BOOK2_3NF CASCADE CONSTRAINTS PURGE;
+DROP TABLE BOOK2_3NF CASCADE CONSTRAINTS PURGE
+           *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> 
+SQL> CREATE TABLE BOOK(
+  2       Book_title VARCHAR(25) NOT NULL,
+  3       Authorname VARCHAR(25),
+  4       Book_type VARCHAR(15),
+  5       Location VARCHAR(5),
+  6       Publisher VARCHAR(25),
+  7       PRIMARY KEY(Book_title));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO BOOK VALUES('Cinderella','Daisy Fisher','Fairy tale','A1','Disney');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO BOOK VALUES('The little Mermaid','Hans Christian Andersen','Fairy tale','A1','C.A. Reitzel');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO BOOK VALUES('Harry Potter','J. K. Rowling','Fantasy novel','B1','Bloomsbury Publishing');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO BOOK VALUES('The Lord of the Rings','J. R. R. Tolkien','Fantasy novel','B1','Harper Collins');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

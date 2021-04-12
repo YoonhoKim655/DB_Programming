@@ -1,0 +1,26 @@
+CREATE OR REPLACE PROCEDURE InsertStaff(tSid IN VARCHAR2,
+result OUT VARCHAR2)
+IS
+
+tPwd VARCHAR2(10);
+tAddr VARCHAR2(200);
+tName VARCHAR2(50);
+tPhone VARCHAR2(20);
+
+BEGIN
+SELECT s_pwd, s_addr, s_name, s_phone
+INTO tPwd, tAddr, tName, tPhone
+FROM temp
+WHERE t_s_id = tSid;
+
+INSERT INTO staff (s_id, s_pwd, s_name, s_addr, s_right, s_phone, s_overdue) VALUES 
+(tSid, tPwd,tName, tAddr, 'customer', tPhone, 0);
+
+delete from temp where t_s_id = tSid;
+
+commit;
+
+result := '가입 신청을 승인했습니다.';
+
+END;
+/

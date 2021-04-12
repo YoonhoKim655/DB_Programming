@@ -1,0 +1,12 @@
+SQL> SELECT DISTINCT ShipperName, SHIPMENT.ShipmentID, DepartureDate
+  2  FROM SHIPMENT, SHIPMENT_ITEM, ITEM
+  3  WHERE SHIPMENT.ShipmentID = SHIPMENT_ITEM.ShipmentID
+  4  AND SHIPMENT_ITEM.ItemID = ITEM.ItemID
+  5  AND City = 'Singapore'
+  6  ORDER BY ShipperName, DepartureDate DESC;
+
+SHIPPERNAME                         SHIPMENTID DEPARTUR                         
+----------------------------------- ---------- --------                         
+International                                4 15/06/02                         
+
+SQL> spool off;

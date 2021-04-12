@@ -1,0 +1,25 @@
+CREATE TABLE SHIPMENT
+(ShipmentID INT NOT NULL,
+ShipperName Char(35) NOT NULL,
+ShipperInvoiceNumber INT NOT NULL,
+DepartureDate Date NULL,
+ArrivalDate Date NULL,
+InsuredValue DECIMAL(12,2) NOT NULL,
+PRIMARY KEY (ShipmentID)); 
+SELECT
+COLUMN_NAME, IS_NULLABLE, DATA_TYPE
+FROM
+INFORMATION_SCHEMA.COLUMNS
+WHERE
+TABLE_NAME = 'SHIPMENT'
+
+COLUMN_NAME                                                                                                                      IS_NULLABLE DATA_TYPE                                                                                                                       
+-------------------------------------------------------------------------------------------------------------------------------- ----------- --------------------------------------------------------------------------------------------------------------------------------
+ShipmentID                                                                                                                       NO          int                                                                                                                             
+ShipperName                                                                                                                      NO          char                                                                                                                            
+ShipperInvoiceNumber                                                                                                             NO          int                                                                                                                             
+DepartureDate                                                                                                                    YES         date                                                                                                                            
+ArrivalDate                                                                                                                      YES         date                                                                                                                            
+InsuredValue                                                                                                                     NO          decimal                                                                                                                         
+
+(6°³ Çà Àû¿ëµÊ)

@@ -1,0 +1,26 @@
+SQL> DECLARE
+  2  i NUMBER := 0;
+  3  j NUMBER := 0;
+  4  BEGIN
+  5  FOR i IN 1..10 LOOP
+  6  FOR j IN 1..i LOOP
+  7  DBMS_OUTPUT.PUT('*');
+  8  END LOOP;
+  9  DBMS_OUTPUT.PUT_LINE('');
+ 10  END LOOP;
+ 11  END;
+ 12  /
+*                                                                               
+**                                                                              
+***                                                                             
+****                                                                            
+*****                                                                           
+******                                                                          
+*******                                                                         
+********                                                                        
+*********                                                                       
+**********                                                                      
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

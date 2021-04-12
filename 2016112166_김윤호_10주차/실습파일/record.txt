@@ -1,0 +1,20 @@
+SQL> DECLARE
+  2  TYPE emp_record IS RECORD(
+  3  v_empno NUMBER,
+  4  v_ename VARCHAR(30));
+  5  emp_rec emp_record;
+  6  BEGIN
+  7  SELECT empno, ename
+  8  INTO emp_rec.v_empno, emp_rec.v_ename
+  9  FROM emp
+ 10  WHERE empno = 7698;
+ 11  DBMS_OUTPUT.PUT_LINE('번호 : ' ||emp_rec.v_empno);
+ 12  DBMS_OUTPUT.PUT_LINE('번호 : ' ||emp_rec.v_ename);
+ 13  END;
+ 14  /
+번호 : 7698                                                                     
+번호 : BLAKE                                                                    
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

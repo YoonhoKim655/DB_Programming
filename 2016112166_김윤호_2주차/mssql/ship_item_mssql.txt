@@ -1,0 +1,23 @@
+CREATE TABLE SHIPMENT_ITEM
+(ShipmentID Int NOT NULL,
+ShipmentItemID Int NOT NULL,
+ItemID Int NOT NULL,
+Value DECIMAL(12,2) NOT NULL,
+PRIMARY KEY(ShipmentID, ShipmentItemID),
+FOREIGN KEY(ShipmentID) REFERENCES SHIPMENT(ShipmentID),
+FOREIGN KEY(ItemID) REFERENCES ITEM(ItemID)); 
+SELECT
+COLUMN_NAME, IS_NULLABLE, DATA_TYPE
+FROM
+INFORMATION_SCHEMA.COLUMNS
+WHERE
+TABLE_NAME = 'SHIPMENT_ITEM'
+
+COLUMN_NAME                                                                                                                      IS_NULLABLE DATA_TYPE                                                                                                                       
+-------------------------------------------------------------------------------------------------------------------------------- ----------- --------------------------------------------------------------------------------------------------------------------------------
+ShipmentID                                                                                                                       NO          int                                                                                                                             
+ShipmentItemID                                                                                                                   NO          int                                                                                                                             
+ItemID                                                                                                                           NO          int                                                                                                                             
+Value                                                                                                                            NO          decimal                                                                                                                         
+
+(4°³ Çà Àû¿ëµÊ)

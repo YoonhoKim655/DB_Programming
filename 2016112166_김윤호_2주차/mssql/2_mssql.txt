@@ -1,0 +1,10 @@
+SELECT ShipmentID, ShipperName, ShipperInvoiceNumber
+FROM SHIPMENT
+WHERE ShipperName LIKE 'AB%';
+
+ShipmentID  ShipperName                         ShipperInvoiceNumber
+----------- ----------------------------------- --------------------
+          1 ABC Trans-Oceanic                                2008651
+          2 ABC Trans-Oceanic                                2009012
+
+(2°³ Çà Àû¿ëµÊ)

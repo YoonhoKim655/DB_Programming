@@ -1,0 +1,32 @@
+SQL> CREATE OR REPLACE PROCEDURE update_sal
+  2  (v_empno IN NUMBER)
+  3  IS
+  4  BEGIN
+  5  UPDATE emp
+  6  SET sal = sal * 1.1
+  7  WHERE empno = v_empno;
+  8  COMMIT;
+  9  END;
+ 10  /
+
+프로시저가 생성되었습니다.
+
+SQL> select sal from emp
+  2  where empno = 7369;
+
+       SAL                                                                      
+----------                                                                      
+       800                                                                      
+
+SQL> EXECUTE update_sal(7369);
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select sal from emp
+  2  where empno = 7369;
+
+       SAL                                                                      
+----------                                                                      
+       880                                                                      
+
+SQL> spool off;

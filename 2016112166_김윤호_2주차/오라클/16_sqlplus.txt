@@ -1,0 +1,47 @@
+SQL> UPDATE SHIPMENT
+  2  SET ShipperInvoiceNumber= 12345678, DepartureDate= to_date('2020-09-12','yyyy-mm-dd'),InsuredValue = 24000.00
+  3  WHERE ShipmentID= 7;
+
+1 행이 갱신되었습니다.
+
+SQL> SELECT * FROM SHIPMENT;
+
+SHIPMENTID SHIPPERNAME                         SHIPPERINVOICENUMBER DEPARTUR    
+---------- ----------------------------------- -------------------- --------    
+ARRIVALD INSUREDVALUE                                                           
+-------- ------------                                                           
+         1 ABC Trans-Oceanic                                2008651 14/12/10    
+15/03/15        15000                                                           
+                                                                                
+         2 ABC Trans-Oceanic                                2009012 15/01/10    
+15/03/20        12000                                                           
+                                                                                
+         3 Worldwide                                       49100300 15/05/05    
+15/07/17        20000                                                           
+                                                                                
+
+SHIPMENTID SHIPPERNAME                         SHIPPERINVOICENUMBER DEPARTUR    
+---------- ----------------------------------- -------------------- --------    
+ARRIVALD INSUREDVALUE                                                           
+-------- ------------                                                           
+         4 International                                     399400 15/06/02    
+15/07/17        17500                                                           
+                                                                                
+         5 Worldwide                                       84899440 15/07/10    
+15/07/18        25000                                                           
+                                                                                
+         6 International                                     488955 15/08/05    
+15/09/11        18000                                                           
+                                                                                
+
+SHIPMENTID SHIPPERNAME                         SHIPPERINVOICENUMBER DEPARTUR    
+---------- ----------------------------------- -------------------- --------    
+ARRIVALD INSUREDVALUE                                                           
+-------- ------------                                                           
+         7 Worldwide                                       12345678 20/09/12    
+20/09/14        24000                                                           
+                                                                                
+
+7 개의 행이 선택되었습니다.
+
+SQL> spool off;

@@ -1,0 +1,8 @@
+SELECT COUNT(*) AS NumberOfShipments
+FROM SHIPMENT;
+
+NumberOfShipments
+-----------------
+                6
+
+(1개 행 적용됨)

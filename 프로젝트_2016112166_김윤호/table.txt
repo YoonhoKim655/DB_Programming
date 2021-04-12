@@ -1,0 +1,40 @@
+INSERT INTO staff(s_id, s_name, s_addr, s_right, s_pwd, s_phone, s_overdue) 
+VALUES ('2016112166', '김윤호', '서울', 'manage', '1234', +821011112226, 0);
+
+INSERT INTO staff(s_id, s_name, s_addr, s_right, s_pwd, s_phone, s_overdue) 
+VALUES ('2020123456', 'Lee', '서울', 'customer', '1234', +8210123456, 0);
+
+INSERT INTO staff(s_id, s_name, s_addr, s_right, s_pwd, s_phone, s_overdue) 
+VALUES ('2020123478', 'Kim', '경기도', 'customer', 'a123b4', +821065142205, 0);
+
+INSERT INTO staff(s_id, s_name, s_addr, s_right, s_pwd, s_phone, s_overdue) 
+VALUES ('2020123490', 'Park', '부산시', 'manage', 'ce1234', +821044982257, 0);
+
+INSERT INTO staff(s_id, s_name, s_addr, s_right, s_pwd, s_phone, s_overdue) 
+VALUES ('2019123456', 'Jeong', '제주도', 'customer', 'fds1234', +821064821955, 0);
+
+
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (2, 'Operation System', 'Kim', 'Dongguk', 6);
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (3, 'C programming', 'Park', 'Dongguk', 3);
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (4, 'JAVA', 'Oh', 'Dongguk', 5);
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (5, 'Web Programming', 'Lee', 'Dongguk', 10);
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (6, 'Compiler', 'Son', 'Dongguk', 4);
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (7, 'Computer Architecture', 'Jang', 'Dongguk', 11);
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (8, 'Sofrware', 'Choi', 'Dongguk', 7);
+
+INSERT INTO book(b_num, b_title, b_writer, b_publish, b_quantity) 
+VALUES (9, 'Book is book', 'Kim', 'Dongguk', 1);

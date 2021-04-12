@@ -1,0 +1,19 @@
+SQL> CREATE OR REPLACE FUNCTION Date2EnrollYear(dDate IN DATE)
+  2  RETURN NUMBER
+  3  IS
+  4  nYear NUMBER;
+  5  sMonth CHAR(2);
+  6  BEGIN
+  7  SELECT TO_NUMBER(TO_CHAR(dDate, 'YYYY')), TO_CHAR(dDate, 'MM')
+  8  INTO nYear, sMonth
+  9  FROM DUAL;
+ 10  IF(sMonth = '11' or sMonth='12') THEN
+ 11  nYear := nYear + 1;
+ 12  END IF;
+ 13  RETURN nYear;
+ 14  END;
+ 15  /
+
+함수가 생성되었습니다.
+
+SQL> spool off

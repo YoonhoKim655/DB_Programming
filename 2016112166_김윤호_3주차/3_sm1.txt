@@ -1,0 +1,25 @@
+SQL> CREATE TABLE STAFF_MEETING1(
+  2       MeetingDate DATE NOT NULL,
+  3       EmployeeName VARCHAR(10) NOT NULL,
+  4       PRIMARY KEY(MeetingDate, EmployeeName));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO STAFF_MEETING1 VALUES(to_date('2020-04-06','yyyy-mm-dd'),'홍길동');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STAFF_MEETING1 VALUES(to_date('2020-04-06','yyyy-mm-dd'),'홍길장');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STAFF_MEETING1 VALUES(to_date('2020-07-07','yyyy-mm-dd'),'홍길돌');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STAFF_MEETING1 VALUES(to_date('2020-02-15','yyyy-mm-dd'),'홍길순');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

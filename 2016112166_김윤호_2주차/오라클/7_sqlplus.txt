@@ -1,0 +1,26 @@
+SQL> SELECT ItemID, Description, Store,LocalCurrencyAmount * ExchangeRate AS USCurrencyAmount
+  2  FROM ITEM;
+
+    ITEMID DESCRIPTION                                                          
+---------- -------------------------                                            
+STORE                                              USCURRENCYAMOUNT             
+-------------------------------------------------- ----------------             
+         1 QE Dining Set                                                        
+Eastern Treasures                                         7156.4047             
+                                                                                
+         2 Willow Serving Dishes                                                
+Jade Antiques                                               60.2106             
+                                                                                
+         3 Large Bureau                                                         
+Eastern Sales                                                1180.6             
+                                                                                
+
+    ITEMID DESCRIPTION                                                          
+---------- -------------------------                                            
+STORE                                              USCURRENCYAMOUNT             
+-------------------------------------------------- ----------------             
+         4 Brass Lamps                                                          
+Jade Antiques                                                29.515             
+                                                                                
+
+SQL> spool off;

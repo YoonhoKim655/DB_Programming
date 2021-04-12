@@ -1,0 +1,13 @@
+mysql> CREATE TABLE ITEM
+    -> (ItemID INT NOT NULL,
+    -> Description VarChar(25) NOT NULL,
+    -> PurchaseDate DATE NOT NULL,
+    -> Store Char(50) NOT NULL,
+    -> City Char(35) NOT NULL,
+    -> Quantity INT NOT NULL,
+    -> LocalCurrencyAmount DECIMAL(18,2) NOT NULL,
+    -> ExchangeRate DECIMAL(12,6) NOT NULL,
+    -> PRIMARY KEY (ItemID)); 
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> \t

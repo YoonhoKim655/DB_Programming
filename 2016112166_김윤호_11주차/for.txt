@@ -1,0 +1,26 @@
+SQL> DECLARE
+  2  CURSOR dept_cnt IS
+  3  SELECT b.dname, COUNT(a.empno) cnt
+  4  FROM emp a, dept b
+  5  WHERE a.deptno = b.deptno
+  6  GROUP BY b.dname;
+  7  BEGIN
+  8  FOR emp_list IN dept_cnt LOOP
+  9  DBMS_OUTPUT.PUT_LINE('부서명 : ' || emp_list.dname);
+ 10  DBMS_OUTPUT.PUT_LINE('사원수 : ' || emp_list.cnt);
+ 11  END LOOP;
+ 12  EXCEPTION
+ 13  WHEN OTHERS THEN
+ 14  DBMS_OUTPUT.PUT_LINE(SQLERRM || '에러 발생');
+ 15  END;
+ 16  /
+부서명 : ACCOUNTING                                                             
+사원수 : 3                                                                      
+부서명 : RESEARCH                                                               
+사원수 : 6                                                                      
+부서명 : SALES                                                                  
+사원수 : 6                                                                      
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

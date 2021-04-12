@@ -1,0 +1,11 @@
+SELECT ItemID, Description, Store,LocalCurrencyAmount * ExchangeRate AS USCurrencyAmount
+FROM ITEM;
+
+ItemID      Description               Store                                              USCurrencyAmount                 
+----------- ------------------------- -------------------------------------------------- ---------------------------------
+          1 QE Dining Set             Eastern Treasures                                                      7156.40470000
+          2 Willow Serving Dishes     Jade Antiques                                                            60.21060000
+          3 Large Bureau              Eastern Sales                                                          1180.60000000
+          4 Brass Lamps               Jade Antiques                                                            29.51500000
+
+(4°³ Çà Àû¿ëµÊ)

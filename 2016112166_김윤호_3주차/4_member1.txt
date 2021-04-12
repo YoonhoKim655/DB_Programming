@@ -1,0 +1,33 @@
+SQL> CREATE TABLE MEMBER1(
+  2       Name VARCHAR(10) NOT NULL,
+  3       Sibling VARCHAR(10) NOT NULL,
+  4       PRIMARY KEY(Name, Sibling));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO MEMBER1 VALUES('Chau','Eileen');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER1 VALUES('Chau','Jonathan');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER1 VALUES('Green','Nikki');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER1 VALUES('Jones','Frank');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER1 VALUES('Jones','Fred');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER1 VALUES('Jones','Sally');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

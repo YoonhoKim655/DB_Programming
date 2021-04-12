@@ -1,0 +1,11 @@
+SELECT City, Store, COUNT(*) AS City_Store_Combination_Count
+FROM ITEM
+GROUP BY City, Store;
+
+City                                Store                                              City_Store_Combination_Count
+----------------------------------- -------------------------------------------------- ----------------------------
+Singapore                           Eastern Sales                                                                 1
+Manila                              Eastern Treasures                                                             1
+Singapore                           Jade Antiques                                                                 2
+
+(3°³ Çà Àû¿ëµÊ)

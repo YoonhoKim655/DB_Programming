@@ -1,0 +1,25 @@
+SQL> desc artist_new;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ARTISTID                                                                            NOT NULL NUMBER(38)
+ LASTNAME                                                                            NOT NULL CHAR(25)
+ FIRSTNAME                                                                           NOT NULL CHAR(25)
+ NATIONALITY                                                                                  CHAR(30)
+ DATEOFBIRTH                                                                                  NUMBER(4)
+ DATEDECEASED                                                                                 NUMBER(4)
+
+SQL> alter table artist_new modify (nationality char(30) not null);
+
+테이블이 변경되었습니다.
+
+SQL> desc artist_new;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ARTISTID                                                                            NOT NULL NUMBER(38)
+ LASTNAME                                                                            NOT NULL CHAR(25)
+ FIRSTNAME                                                                           NOT NULL CHAR(25)
+ NATIONALITY                                                                         NOT NULL CHAR(30)
+ DATEOFBIRTH                                                                                  NUMBER(4)
+ DATEDECEASED                                                                                 NUMBER(4)
+
+SQL> spool off;

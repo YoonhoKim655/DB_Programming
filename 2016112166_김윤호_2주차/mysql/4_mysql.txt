@@ -1,0 +1,13 @@
+mysql> SELECT ShipmentID, ShipperName, ShipperInvoiceNumber, ArrivalDate
+    -> FROM SHIPMENT
+    -> WHERE DATE_FORMAT(DepartureDate, '%d') = 10;
++------------+-------------------+----------------------+-------------+
+| ShipmentID | ShipperName       | ShipperInvoiceNumber | ArrivalDate |
++------------+-------------------+----------------------+-------------+
+|          1 | ABC Trans-Oceanic |              2008651 | 2015-03-15  |
+|          2 | ABC Trans-Oceanic |              2009012 | 2015-03-20  |
+|          5 | Worldwide         |             84899440 | 2015-07-18  |
++------------+-------------------+----------------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> \t

@@ -1,0 +1,70 @@
+SQL> CREATE TABLE ITEM
+  2  (ItemID NUMBER(10) NOT NULL,
+  3  Description VarChar(25) NOT NULL,
+  4  PurchaseDate Date NOT NULL,
+  5  Store Char(50) NOT NULL,
+  6  City Char(35) NOT NULL,
+  7  Quantity NUMBER(10) NOT NULL,
+  8  LocalCurrencyAmount NUMBER(18,2) NOT NULL,
+  9  ExchangeRate NUMBER(12,6) NOT NULL,
+ 10  PRIMARY KEY (ItemID));
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO ITEM VALUES(1,'QE Dining Set', to_date('2015-04-07','yyyy-mm-dd'), 'Eastern Treasures', 'Manila', 2, 403405, 0.01774);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO ITEM VALUES(2,'Willow Serving Dishes', to_date('2015-07-15','yyyy-mm-dd'), 'Jade Antiques', 'Singapore', 75, 102, 0.5903);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO ITEM VALUES(3,'Large Bureau', to_date('2015-07-17','yyyy-mm-dd'), 'Eastern Sales', 'Singapore', 8, 2000, 0.5903);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO ITEM VALUES(4,'Brass Lamps', to_date('2015-07-20','yyyy-mm-dd'), 'Jade Antiques', 'Singapore', 40, 50, 0.5903);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> 
+SQL> SELECT * FROM ITEM;
+
+    ITEMID DESCRIPTION               PURCHASE                                   
+---------- ------------------------- --------                                   
+STORE                                                                           
+--------------------------------------------------                              
+CITY                                  QUANTITY LOCALCURRENCYAMOUNT EXCHANGERATE 
+----------------------------------- ---------- ------------------- ------------ 
+         1 QE Dining Set             15/04/07                                   
+Eastern Treasures                                                               
+Manila                                       2              403405       .01774 
+                                                                                
+         2 Willow Serving Dishes     15/07/15                                   
+Jade Antiques                                                                   
+Singapore                                   75                 102        .5903 
+
+    ITEMID DESCRIPTION               PURCHASE                                   
+---------- ------------------------- --------                                   
+STORE                                                                           
+--------------------------------------------------                              
+CITY                                  QUANTITY LOCALCURRENCYAMOUNT EXCHANGERATE 
+----------------------------------- ---------- ------------------- ------------ 
+                                                                                
+         3 Large Bureau              15/07/17                                   
+Eastern Sales                                                                   
+Singapore                                    8                2000        .5903 
+                                                                                
+         4 Brass Lamps               15/07/20                                   
+Jade Antiques                                                                   
+
+    ITEMID DESCRIPTION               PURCHASE                                   
+---------- ------------------------- --------                                   
+STORE                                                                           
+--------------------------------------------------                              
+CITY                                  QUANTITY LOCALCURRENCYAMOUNT EXCHANGERATE 
+----------------------------------- ---------- ------------------- ------------ 
+Singapore                                   40                  50        .5903 
+                                                                                
+
+SQL> spool off;

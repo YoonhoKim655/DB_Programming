@@ -1,0 +1,17 @@
+SQL> CREATE TABLE BOOK_TYPES(
+  2       Book_type VARCHAR(15) NOT NULL,
+  3       Location VARCHAR(5),
+  4       PRIMARY KEY(Book_type));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO BOOK_TYPES VALUES('Fairy tale','A1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO BOOK_TYPES VALUES('Fantasy novel','B1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

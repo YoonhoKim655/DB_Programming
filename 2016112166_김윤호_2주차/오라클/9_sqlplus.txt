@@ -1,0 +1,19 @@
+SQL> SELECT City, Store, COUNT (*) AS City_Store_Combination_Count
+  2  FROM ITEM
+  3  GROUP BY City, Store;
+
+CITY                                                                            
+-----------------------------------                                             
+STORE                                              CITY_STORE_COMBINATION_COUNT 
+-------------------------------------------------- ---------------------------- 
+Singapore                                                                       
+Eastern Sales                                                                 1 
+                                                                                
+Manila                                                                          
+Eastern Treasures                                                             1 
+                                                                                
+Singapore                                                                       
+Jade Antiques                                                                 2 
+                                                                                
+
+SQL> spool off;

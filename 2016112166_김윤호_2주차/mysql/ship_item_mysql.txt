@@ -1,0 +1,11 @@
+mysql> CREATE TABLE SHIPMENT_ITEM
+    -> (ShipmentID Int NOT NULL,
+    -> ShipmentItemID Int NOT NULL,
+    -> ItemID Int NOT NULL,
+    -> Value DECIMAL(12,2) NOT NULL,
+    -> PRIMARY KEY(ShipmentID, ShipmentItemID),
+    -> FOREIGN KEY(ShipmentID) REFERENCES SHIPMENT(ShipmentID),
+    -> FOREIGN KEY(ItemID) REFERENCES ITEM(ItemID)); 
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> \t

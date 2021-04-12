@@ -1,0 +1,22 @@
+SQL> CREATE TABLE STUDENT_GRADE2(
+  2       Cid VARCHAR(10) NOT NULL,
+  3       Cname VARCHAR(15),
+  4       Cunit VARCHAR(2),
+  5       PRIMARY KEY(Cid));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO STUDENT_GRADE2 VALUES('C100','C언어','3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT_GRADE2 VALUES('C200','데이터베이스','3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT_GRADE2 VALUES('C300','프로그래밍','3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

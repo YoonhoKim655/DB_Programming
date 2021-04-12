@@ -1,0 +1,36 @@
+SQL> DECLARE
+  2  CURSOR emp_list IS
+  3  SELECT empno
+  4  FROM emp
+  5  WHERE empno = 7934
+  6  FOR UPDATE;
+  7  BEGIN
+  8  FOR emplst IN emp_list LOOP
+  9  UPDATE emp
+ 10  SET job = 'SALESMAN'
+ 11  WHERE CURRENT OF emp_list;
+ 12  DBMS_OUTPUT.PUT_LINE('수정 성공');
+ 13  END LOOP;
+ 14  
+ 15  commit;
+ 16  
+ 17  EXCEPTION
+ 18  WHEN OTHERS THEN
+ 19  DBMS_OUTPUT.PUT_LINE('ERR MESSAGE : ' || SQLERRM);
+ 20  END;
+ 21  /
+수정 성공                                                                       
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from emp
+  2  where empno = 7934;
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7934 MILLER     SALESMAN        7782 82/01/23       1430
+        10
+
+SQL> spool off;

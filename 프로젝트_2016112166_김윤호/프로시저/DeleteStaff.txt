@@ -1,0 +1,34 @@
+CREATE OR REPLACE PROCEDURE DeleteStaff(sStaffId IN VARCHAR2,
+result OUT VARCHAR2)
+IS
+Rented EXCEPTION;
+
+nCntRent NUMBER;
+nCnt NUMBER;
+
+BEGIN
+result := '';
+DBMS_OUTPUT.PUT_LINE('#');
+DBMS_OUTPUT.PUT_LINE('회원 번호 ' ||  sStaffId || '을 삭제를 하시겠습니까?. ');
+
+SELECT COUNT(*)
+INTO nCntRent
+FROM rental r
+WHERE r.s_id = sStaffId;
+
+IF(nCntRent > 0) THEN
+RAISE Rented;
+END IF;
+
+DELETE FROM staff WHERE s_id = sStaffId;
+COMMIT;
+result := '회원 정보의 삭제가 완료되었습니다.';
+
+EXCEPTION
+WHEN Rented THEN
+result := '반납되지 않은 책이 존재 하는 회원입니다.';
+WHEN OTHERS THEN
+ROLLBACK;
+result := SQLCODE;
+END;
+/

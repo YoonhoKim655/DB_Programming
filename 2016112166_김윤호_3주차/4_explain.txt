@@ -1,0 +1,29 @@
+/*다치 종속이 존재하는 기존의 릴레이션을 다치 종속을 하는 name을 나누어서 2개의 릴레이션으로 분해를 해주었습니다.*/
+
+SQL> select Name
+  2  from member1
+  3  where Name not in (select M1.Name
+  4  from member1 M1, member2 M2
+  5  where M1.Name = M2.Name);
+
+선택된 레코드가 없습니다.
+
+SQL> 
+SQL> select Name, Sibling, Hobby
+  2  from member1 NATURAL JOIN member2;
+
+NAME       SIBLING    HOBBY                                                                         
+---------- ---------- --------------------                                                          
+Chau       Eileen     Scuba diving                                                                  
+Chau       Jonathan   Scuba diving                                                                  
+Green      Nikki      Embroidery                                                                    
+Jones      Frank      Scuba diving                                                                  
+Jones      Frank      Model boats                                                                   
+Jones      Fred       Scuba diving                                                                  
+Jones      Fred       Model boats                                                                   
+Jones      Sally      Scuba diving                                                                  
+Jones      Sally      Model boats                                                                   
+
+9 개의 행이 선택되었습니다.
+
+SQL> spool off

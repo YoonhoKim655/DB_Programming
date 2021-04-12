@@ -1,0 +1,36 @@
+SQL> DECLARE
+  2  CURSOR emp_cnt IS
+  3  SELECT DISTINCT job
+  4  FROM emp
+  5  ORDER BY job ASC;
+  6  v_job emp.job %TYPE;
+  7  BEGIN
+  8  DBMS_OUTPUT.PUT_LINE('직책명');
+  9  DBMS_OUTPUT.PUT_LINE('--------------');
+ 10  OPEN emp_cnt;
+ 11  LOOP
+ 12  FETCH emp_cnt INTO v_job;
+ 13  EXIT WHEN emp_cnt%NOTFOUND;
+ 14  DBMS_OUTPUT.PUT_LINE(v_job);
+ 15  END LOOP;
+ 16  DBMS_OUTPUT.PUT_LINE(chr(10)||chr(13)||'직책의 수 : ' || emp_cnt%ROWCOUNT);
+ 17  CLOSE emp_cnt;
+ 18  EXCEPTION
+ 19  WHEN OTHERS THEN
+ 20  DBMS_OUTPUT.PUT_LINE(SQLERRM || '에러 발생');
+ 21  END;
+ 22  /
+직책명                                                                          
+--------------                                                                  
+ANALYST                                                                         
+CLERK                                                                           
+MANAGER                                                                         
+PRESIDENT                                                                       
+SALES                                                                           
+SALESMAN                                                                        
+
+직책의 수 : 6                                                                 
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

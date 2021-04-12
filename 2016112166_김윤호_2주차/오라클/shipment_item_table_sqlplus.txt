@@ -1,0 +1,38 @@
+SQL> CREATE TABLE SHIPMENT_ITEM
+  2  (ShipmentID NUMBER(10) NOT NULL,
+  3  ShipmentItemID NUMBER(10) NOT NULL,
+  4  ItemID NUMBER(10) NOT NULL,
+  5  Value NUMBER(12,2) NOT NULL,
+  6  PRIMARY KEY(ShipmentID, ShipmentItemID),
+  7  FOREIGN KEY(ShipmentID) REFERENCES SHIPMENT(ShipmentID),
+  8  FOREIGN KEY(ItemID) REFERENCES ITEM(ItemID));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO SHIPMENT_ITEM VALUES(3, 1, 1, 15000);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT_ITEM VALUES(4, 1, 4, 1200);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT_ITEM VALUES(4, 2, 3, 9500);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SHIPMENT_ITEM VALUES(4, 3, 2, 4500);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> SELECT * FROM SHIPMENT_ITEM;
+
+SHIPMENTID SHIPMENTITEMID     ITEMID      VALUE                                 
+---------- -------------- ---------- ----------                                 
+         3              1          1      15000                                 
+         4              1          4       1200                                 
+         4              2          3       9500                                 
+         4              3          2       4500                                 
+
+SQL> spool off;

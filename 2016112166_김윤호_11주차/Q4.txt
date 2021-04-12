@@ -1,0 +1,29 @@
+SQL> CREATE OR REPLACE FUNCTION FC_return_deptno
+  2  (v_ename IN EMP.ENAME%TYPE)
+  3  RETURN emp.ename%TYPE
+  4  IS
+  5  v_deptno emp.deptno%TYPE;
+  6  BEGIN
+  7  select deptno
+  8  into v_deptno
+  9  from emp
+ 10  where ename = v_ename;
+ 11  
+ 12  RETURN v_deptno;
+ 13  END;
+ 14  /
+
+함수가 생성되었습니다.
+
+SQL> VAR g_deptno NUMBER
+SQL> EXECUTE :g_deptno := FC_return_deptno('SCOTT')
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> PRINT g_deptno
+
+  G_DEPTNO                                                                      
+----------                                                                      
+        20                                                                      
+
+SQL> spool off;

@@ -1,0 +1,18 @@
+SQL> 
+SQL> DECLARE
+  2  emp_max emp.sal%TYPE;
+  3  emp_min emp.sal%TYPE;
+  4  BEGIN
+  5  SELECT MAX(sal), MIN(sal)
+  6  INTO emp_max, emp_min
+  7  FROM emp;
+  8  DBMS_OUTPUT.PUT_LINE('최고급여 : ' || emp_max);
+  9  DBMS_OUTPUT.PUT_LINE('최저급여 : ' || emp_min);
+ 10  END;
+ 11  /
+최고급여 : 5500                                                                 
+최저급여 : 800                                                                  
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

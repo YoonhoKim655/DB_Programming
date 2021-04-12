@@ -1,0 +1,19 @@
+SQL> select * from staff_meeting1;
+
+MEETINGD EMPLOYEENA                                                                                 
+-------- ----------                                                                                 
+20/02/15 È«±æ¼ø                                                                                     
+20/04/06 È«±æµ¿                                                                                     
+20/04/06 È«±æÀå                                                                                     
+20/07/07 È«±æµ¹                                                                                     
+
+SQL> select * from staff_meeting2;
+
+EMPLOYEENA PROJECTNAME                                                                              
+---------- --------------------                                                                     
+È«±æµ¿     School Project                                                                           
+È«±æÀå     Programming Project                                                                      
+È«±æµ¹     Robot Project                                                                            
+È«±æ¼ø     Basic Project                                                                            
+
+SQL> spool off

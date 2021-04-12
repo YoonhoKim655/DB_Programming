@@ -1,0 +1,31 @@
+SQL> DECLARE
+  2  v_sal emp.sal %TYPE;
+  3  v_update_row NUMBER;
+  4  v_empno emp.empno %TYPE;
+  5  BEGIN
+  6  v_empno := 7900;
+  7  SELECT sal
+  8  INTO v_sal
+  9  FROM emp
+ 10  WHERE empno = v_empno;
+ 11  
+ 12  IF SQL%FOUND THEN
+ 13  DBMS_OUTPUT.PUT_LINE('데이터 존재 : ' || v_sal);
+ 14  END IF;
+ 15  
+ 16  UPDATE emp
+ 17  SET sal = sal*1.1
+ 18  WHERE empno = v_empno;
+ 19  
+ 20  v_update_row := SQL%ROWCOUNT;
+ 21  COMMIT;
+ 22  
+ 23  DBMS_OUTPUT.PUT_LINE('급여인상 사원수 : ' || v_update_row);
+ 24  END;
+ 25  /
+데이터 존재 : 950                                                               
+급여인상 사원수 : 1                                                             
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

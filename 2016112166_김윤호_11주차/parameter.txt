@@ -1,0 +1,26 @@
+SQL> DECLARE
+  2  param_deptno dept.deptno%TYPE;
+  3  CURSOR emp_list(v_deptno emp.deptno%TYPE) IS
+  4  SELECT ename
+  5  FROM emp
+  6  WHERE deptno = v_deptno;
+  7  BEGIN
+  8  DBMS_OUTPUT.PUT_LINE(' ** 입력한 부서 사람들 **');
+  9  
+ 10  param_deptno := 10;
+ 11  FOR emplst IN emp_list(param_deptno) LOOP
+ 12  DBMS_OUTPUT.PUT_LINE('이름 : ' || emplst.ename);
+ 13  END LOOP;
+ 14  EXCEPTION
+ 15  WHEN OTHERS THEN
+ 16  DBMS_OUTPUT.PUT_LINE('ERR MESSAGE : ' || SQLERRM);
+ 17  END;
+ 18  /
+** 입력한 부서 사람들 **                                                        
+이름 : CLARK                                                                    
+이름 : KING                                                                     
+이름 : MILLER                                                                   
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

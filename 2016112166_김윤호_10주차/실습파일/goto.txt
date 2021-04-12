@@ -1,0 +1,18 @@
+SQL> DECLARE
+  2  i NUMBER := 0;
+  3  BEGIN
+  4  FOR i IN 1..50 LOOP
+  5  IF i = 30 THEN
+  6  GOTO my_label;
+  7  END IF;
+  8  END LOOP;
+  9  
+ 10  <<my_label>>
+ 11  DBMS_OUTPUT.PUT_LINE('i=30');
+ 12  END;
+ 13  /
+i=30                                                                            
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off

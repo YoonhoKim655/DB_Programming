@@ -1,0 +1,8 @@
+SQL> SELECT MAX (InsuredValue) AS MaxInsuredValue,MIN (InsuredValue) AS MinInsuredValue,AVG (InsuredValue) AS AvgInsuredValue
+  2  FROM SHIPMENT;
+
+MAXINSUREDVALUE MININSUREDVALUE AVGINSUREDVALUE                                 
+--------------- --------------- ---------------                                 
+          25000           12000      17916.6667                                 
+
+SQL> spool off;

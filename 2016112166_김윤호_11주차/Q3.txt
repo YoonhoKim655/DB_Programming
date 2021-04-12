@@ -1,0 +1,225 @@
+SQL> CREATE OR REPLACE PROCEDURE InsertEMP
+  2  (v_empno IN emp.empno%TYPE,
+  3  v_ename IN emp.ename%TYPE,
+  4  v_job IN emp.job%TYPE,
+  5  v_mgr IN emp.mgr%TYPE,
+  6  v_date IN emp.hiredate%TYPE,
+  7  v_sal IN emp.sal%TYPE)
+  8  IS
+  9  duplicate_empno EXCEPTION;
+ 10  nCnt NUMBER;
+ 11  v_deptno emp.deptno%TYPE;
+ 12  v_comm emp.comm%TYPE;
+ 13  BEGIN
+ 14  SELECT COUNT(*)
+ 15  INTO nCnt
+ 16  FROM emp
+ 17  WHERE empno = v_empno;
+ 18
+ 19  IF nCnt > 0 THEN
+ 20  RAISE duplicate_empno;
+ 21  END IF;
+ 22
+ 23  SELECT deptno
+ 24  INTO v_deptno
+ 25  FROM emp
+ 26  where empno = v_mgr;
+ 27
+ 28  IF (v_job = 'SALESMAN' )
+ 29  THEN
+ 30  INSERT INTO emp(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+ 31  VALUES(v_empno, v_ename, v_job, v_mgr, v_date, v_sal, 10, v_deptno);
+ 32  ELSE
+ 33  INSERT INTO emp(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+ 34  VALUES(v_empno, v_ename, v_job, v_mgr, v_date, v_sal, NULL, v_deptno);
+ 35  END IF;
+ 36
+ 37
+ 38  EXCEPTION
+ 39  WHEN duplicate_empno THEN
+ 40  DBMS_OUTPUT.PUT_LINE('중복된 사원번호입니다.');
+ 41  WHEN OTHERS THEN
+ 42  DBMS_OUTPUT.PUT_LINE('ERROR MESSAGE : ' || SQLERRM);
+ 43  END;
+ 44  /
+
+프로시저가 생성되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      1000 LION       SALES                20/11/16       5000
+
+
+      7369 SMITH      CLERK           7902 80/12/17        880
+        20
+
+      7499 ALLEN      SALESMAN        7698 81/02/20       1600        300
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7521 WARD       SALESMAN        7698 81/02/22       1250        500
+        30
+
+      7566 JONES      MANAGER         7839 81/04/02       2975
+        20
+
+      7654 MARTIN     SALESMAN        7698 81/09/28       1250       1400
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7698 BLAKE      MANAGER         7839 81/05/01       2850
+        30
+
+      7782 CLARK      MANAGER         7839 81/06/09       2695
+        10
+
+      7788 SCOTT      ANALYST         7566 87/01/13       3000
+        20
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7839 KING       PRESIDENT            81/11/17       5500
+        10
+
+      7844 TURNER     SALESMAN        7698 81/09/08       1500          0
+        30
+
+      7876 ADAMS      CLERK           7788 87/10/23       1100
+        20
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7900 JAMES      CLERK           7698 81/12/03     1149.5
+        30
+
+      7902 FORD       ANALYST         7566 81/12/03       3000
+        20
+
+      7934 MILLER     SALESMAN        7782 82/01/23       1430
+        10
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7370 JASON      ANALYST         7369 80/12/17        900
+        20
+
+
+16 개의 행이 선택되었습니다.
+
+SQL> EXECUTE InsertEMP(7900, 'ALVIN', 'SALESMAN', 7788, SYSDATE, 1500);
+중복된 사원번호입니다.
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> EXECUTE InsertEMP(7904, 'ALVIN', 'SALEMAN', 7788, SYSDATE, 1500);
+급여 평균 : 2254.969
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      1000 LION       SALES                20/11/16       5000
+
+
+      7369 SMITH      CLERK           7902 80/12/17        880
+        20
+
+      7499 ALLEN      SALESMAN        7698 81/02/20       1600        300
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7521 WARD       SALESMAN        7698 81/02/22       1250        500
+        30
+
+      7566 JONES      MANAGER         7839 81/04/02       2975
+        20
+
+      7654 MARTIN     SALESMAN        7698 81/09/28       1250       1400
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7698 BLAKE      MANAGER         7839 81/05/01       2850
+        30
+
+      7782 CLARK      MANAGER         7839 81/06/09       2695
+        10
+
+      7788 SCOTT      ANALYST         7566 87/01/13       3000
+        20
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7839 KING       PRESIDENT            81/11/17       5500
+        10
+
+      7844 TURNER     SALESMAN        7698 81/09/08       1500          0
+        30
+
+      7876 ADAMS      CLERK           7788 87/10/23       1100
+        20
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7900 JAMES      CLERK           7698 81/12/03     1149.5
+        30
+
+      7902 FORD       ANALYST         7566 81/12/03       3000
+        20
+
+      7934 MILLER     SALESMAN        7782 82/01/23       1430
+        10
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM
+---------- ---------- --------- ---------- -------- ---------- ----------
+    DEPTNO
+----------
+      7370 JASON      ANALYST         7369 80/12/17        900
+        20
+
+      7904 ALVIN      SALEMAN         7788 20/11/16       1500
+        20
+
+
+17 개의 행이 선택되었습니다.
+
+SQL>spool off;

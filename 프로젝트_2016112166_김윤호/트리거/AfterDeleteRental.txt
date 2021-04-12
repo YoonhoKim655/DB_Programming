@@ -1,0 +1,9 @@
+CREATE OR REPLACE TRIGGER AfterDeleteRental
+AFTER DELETE ON rental
+FOR EACH ROW
+DECLARE
+BEGIN
+update book set b_quantity = b_quantity +1 where b_num = :old.b_num;
+COMMIT;
+END;
+/

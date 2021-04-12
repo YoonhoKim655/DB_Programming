@@ -1,0 +1,13 @@
+mysql> INSERT INTO ITEM VALUES(1,'QE Dining Set', '2015-04-07', 'Eastern Treasures', 'Manila', 2, 403405, 0.01774);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO ITEM VALUES(2,'Willow Serving Dishes', '2015-07-15', 'Jade Antiques', 'Singapore', 75, 102, 0.5903);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO ITEM VALUES(3,'Large Bureau', '2015-07-17', 'Eastern Sales', 'Singapore', 8, 2000, 0.5903);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO ITEM VALUES(4,'Brass Lamps', '2015-07-20', 'Jade Antiques', 'Singapore', 40, 50, 0.5903);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> \t

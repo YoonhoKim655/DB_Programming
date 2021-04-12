@@ -1,0 +1,68 @@
+SQL> DROP TABLE MEMBER CASCADE CONSTRAINTS PURGE;
+DROP TABLE MEMBER CASCADE CONSTRAINTS PURGE
+           *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> DROP TABLE MEMBER_SIBLING_4NF CASCADE CONSTRAINTS PURGE;
+DROP TABLE MEMBER_SIBLING_4NF CASCADE CONSTRAINTS PURGE
+           *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> DROP TABLE MEMBER_HOBBY_4NF CASCADE CONSTRAINTS PURGE;
+DROP TABLE MEMBER_HOBBY_4NF CASCADE CONSTRAINTS PURGE
+           *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> 
+SQL> CREATE TABLE MEMBER(
+  2       Name VARCHAR(10) NOT NULL,
+  3       Sibling VARCHAR(10) NOT NULL,
+  4       Hobby VARCHAR(20) NOT NULL,
+  5       PRIMARY KEY(Name, Sibling, Hobby));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO MEMBER VALUES('Chau','Eileen','Scuba diving');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Chau','Jonathan','Scuba diving');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Green','Nikki','Embroidery');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Jones','Frank','Model boats');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Jones','Frank','Scuba diving');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Jones','Fred','Model boats');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Jones','Fred','Scuba diving');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Jones','Sally','Model boats');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO MEMBER VALUES('Jones','Sally','Scuba diving');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

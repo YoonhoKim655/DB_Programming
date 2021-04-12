@@ -1,0 +1,21 @@
+SQL> CREATE OR REPLACE FUNCTION Date2EnrollSemester(dDate IN DATE)
+  2  RETURN NUMBER
+  3  IS
+  4  nSemester NUMBER;
+  5  sMonth CHAR(2);
+  6  BEGIN
+  7  SELECT TO_CHAR(dDate, 'MM')
+  8  INTO sMonth
+  9  FROM DUAL;
+ 10  IF(sMonth = '11' or sMonth='12' or (sMonth >= '01' and sMonth <= '04')) THEN
+ 11  nSemester := 1;
+ 12  ELSE
+ 13  nSemester := 2;
+ 14  END IF;
+ 15  RETURN nSemester;
+ 16  END;
+ 17  /
+
+함수가 생성되었습니다.
+
+SQL> spool off

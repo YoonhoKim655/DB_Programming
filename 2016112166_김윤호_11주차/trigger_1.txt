@@ -1,0 +1,39 @@
+SQL> CREATE OR REPLACE TRIGGER trigger_test
+  2  BEFORE
+  3  UPDATE ON dept
+  4  FOR EACH ROW
+  5  BEGIN
+  6  DBMS_OUTPUT.PUT_LINE('변경 전 컬럼 값 : ' || :old.dname);
+  7  DBMS_OUTPUT.PUT_LINE('변경 후 컬럼 값 : ' || :new.dname);
+  8  END;
+  9  /
+
+트리거가 생성되었습니다.
+
+SQL> select * from dept;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+SQL> UPDATE dept
+  2  SET dname = 'sales'
+  3  WHERE deptno = 10;
+변경 전 컬럼 값 : ACCOUNTING                                                    
+변경 후 컬럼 값 : sales                                                         
+
+1 행이 갱신되었습니다.
+
+SQL> select * from dept;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 sales          NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+SQL> spool off;

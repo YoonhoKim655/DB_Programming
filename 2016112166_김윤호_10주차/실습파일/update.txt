@@ -1,0 +1,24 @@
+SQL> DECLARE
+  2  v_name shop.shop_name%TYPE;
+  3  BEGIN
+  4  v_name := '동국상점4';
+  5  UPDATE shop
+  6  SET shop_name = v_name
+  7  WHERE shop_name = '동국상점1';
+  8  COMMIT;
+  9  END;
+ 10  /
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from shop;
+
+   SHOP_NO SHOP_NAME                                                            
+---------- ------------------------------                                       
+       100 동국상점4                                                            
+       200 동국상점2                                                            
+       300 동국상점3                                                            
+       400 동국상점4                                                            
+       401 동국상점5                                                            
+
+SQL> spool off;

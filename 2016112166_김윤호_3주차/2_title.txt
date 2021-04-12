@@ -1,0 +1,27 @@
+SQL> CREATE TABLE BOOK_TITLES(
+  2       Book_title VARCHAR(25) NOT NULL,
+  3       Authorname VARCHAR(25),
+  4       Book_type VARCHAR(15),
+  5       Publisher VARCHAR(25),
+  6       PRIMARY KEY(Book_title));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO BOOK_TITLES VALUES('Cinderella','Daisy Fisher','Fairy tale','Disney');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO BOOK_TITLES VALUES('The little Mermaid','Hans Christian Andersen','Fairy tale','C.A. Reitzel');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO BOOK_TITLES VALUES('Harry Potter','J. K. Rowling','Fantasy novel','Bloomsbury Publishing');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO BOOK_TITLES VALUES('The Lord of the Rings','J. R. R. Tolkien','Fantasy novel','Harper Collins');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

@@ -1,0 +1,25 @@
+SQL> CREATE TABLE STAFF_MEETING2(
+  2       EmployeeName VARCHAR(10) NOT NULL,
+  3       ProjectName VARCHAR(20) NOT NULL,
+  4       PRIMARY KEY(EmployeeName));
+
+테이블이 생성되었습니다.
+
+SQL> 
+SQL> INSERT INTO STAFF_MEETING2 VALUES('홍길동','School Project');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STAFF_MEETING2 VALUES('홍길장','Programming Project');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STAFF_MEETING2 VALUES('홍길돌','Robot Project');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STAFF_MEETING2 VALUES('홍길순','Basic Project');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off;

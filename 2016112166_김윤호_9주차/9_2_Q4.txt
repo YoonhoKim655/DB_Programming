@@ -1,0 +1,119 @@
+SQL> create table employees_v2(
+  2  id int constraint pk_employee_v2 primary key,
+  3  name char(50) not null,
+  4  department char(20) not null,
+  5  budget int
+  6  );
+
+테이블이 생성되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                  NOT NULL NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+ BUDGET                                                                                       NUMBER(38)
+
+SQL> alter table employees_v2 drop column budget;
+
+테이블이 변경되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                  NOT NULL NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+
+SQL> alter table employees_v2 add age number;
+
+테이블이 변경되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                  NOT NULL NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+ AGE                                                                                          NUMBER
+
+SQL> drop table employees_v2;
+
+테이블이 삭제되었습니다.
+
+SQL> create table employees_v2 as select * from employees;
+
+테이블이 생성되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                           NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+ BUDGET                                                                                       NUMBER(38)
+
+SQL> alter table employees_v2 drop column budget;
+
+테이블이 변경되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                           NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+
+SQL> alter table employees_v2 add age number;
+
+테이블이 변경되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                           NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+ AGE                                                                                          NUMBER
+
+SQL> drop table employees_v2;
+
+테이블이 삭제되었습니다.
+
+SQL> alter table employees rename to employees_v2;
+
+테이블이 변경되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                  NOT NULL NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+ BUDGET                                                                                       NUMBER(38)
+
+SQL> alter table employees_v2 drop column budget;
+
+테이블이 변경되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                  NOT NULL NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+
+SQL> alter table employees_v2 add age number;
+
+테이블이 변경되었습니다.
+
+SQL> desc employees_v2;
+ 이름                                                                                널?      유형
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ ID                                                                                  NOT NULL NUMBER(38)
+ NAME                                                                                NOT NULL CHAR(50)
+ DEPARTMENT                                                                          NOT NULL CHAR(20)
+ AGE                                                                                          NUMBER
+
+SQL> spool off

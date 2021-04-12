@@ -1,0 +1,13 @@
+SQL> alter table artist_new add constraint artist_Nationality
+  2  check (Nationality IN ('Spanish', 'Russian', 'German', 'French', 'United States'));
+
+테이블이 변경되었습니다.
+
+SQL> insert into artist_new(artistid, lastname, firstname, nationality, dateofbirth, datedeceased) values(10440,'Miro3','Joan3','Japan',1900,1983);
+insert into artist_new(artistid, lastname, firstname, nationality, dateofbirth, datedeceased) values(10440,'Miro3','Joan3','Japan',1900,1983)
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(ST2016112166.ARTIST_NATIONALITY)이 위배되었습니다 
+
+
+SQL> spool off

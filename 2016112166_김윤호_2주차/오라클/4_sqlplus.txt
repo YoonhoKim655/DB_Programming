@@ -1,0 +1,11 @@
+SQL> SELECT ShipmentID, ShipperName, ShipperInvoiceNumber, ArrivalDate
+  2  FROM SHIPMENT
+  3  WHERE DepartureDate LIKE '%10';
+
+SHIPMENTID SHIPPERNAME                         SHIPPERINVOICENUMBER ARRIVALD    
+---------- ----------------------------------- -------------------- --------    
+         1 ABC Trans-Oceanic                                2008651 15/03/15    
+         2 ABC Trans-Oceanic                                2009012 15/03/20    
+         5 Worldwide                                       84899440 15/07/18    
+
+SQL> spool off;

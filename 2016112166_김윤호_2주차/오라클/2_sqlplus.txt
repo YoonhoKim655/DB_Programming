@@ -1,0 +1,10 @@
+SQL> SELECT ShipmentID, ShipperName, ShipperInvoiceNumber
+  2  FROM SHIPMENT
+  3  WHERE ShipperName LIKE 'AB%';
+
+SHIPMENTID SHIPPERNAME                         SHIPPERINVOICENUMBER             
+---------- ----------------------------------- --------------------             
+         1 ABC Trans-Oceanic                                2008651             
+         2 ABC Trans-Oceanic                                2009012             
+
+SQL> spool off;

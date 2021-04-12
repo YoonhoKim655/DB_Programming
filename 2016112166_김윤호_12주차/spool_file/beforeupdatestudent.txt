@@ -1,0 +1,28 @@
+SQL> CREATE OR REPLACE TRIGGER BeforeUpdateStudent
+  2  BEFORE UPDATE ON student
+  3  FOR EACH ROW
+  4  DECLARE
+  5  underflow_length EXCEPTION;
+  6  invalid_value EXCEPTION;
+  7  nLength NUMBER;
+  8  nBlank NUMBER;
+  9  BEGIN
+ 10  SELECT length(:new.s_pwd), instr(:new.s_pwd,' ')
+ 11  INTO nLength, nBlank
+ 12  FROM DUAL;
+ 13  IF(nLength < 4) THEN
+ 14  RAISE underflow_length;
+ 15  ELSIF(nBlank > 0) THEN
+ 16  RAISE invalid_value;
+ 17  END IF;
+ 18  EXCEPTION
+ 19  WHEN underflow_length THEN
+ 20  RAISE_APPLICATION_ERROR(-20002, '암호는 4자리 이상이어야 합니다.');
+ 21  WHEN invalid_value THEN
+ 22  RAISE_APPLICATION_ERROR(-20003,'암호에 공란은 입력되지 않습니다.');
+ 23  END;
+ 24  /
+
+트리거가 생성되었습니다.
+
+SQL> spool off

@@ -1,0 +1,45 @@
+SQL> CREATE OR REPLACE PROCEDURE SelectTimeTable
+  2  (sStudentId IN VARCHAR2,
+  3  nYear IN NUMBER,
+  4  nSemester IN NUMBER)
+  5  IS
+  6  sId COURSE.C_ID%TYPE;
+  7  sName COURSE.C_NAME%TYPE;
+  8  nIdNo COURSE.C_ID_NO%TYPE;
+  9  nUnit COURSE.C_UNIT%TYPE;
+ 10  nTime TEACH.T_TIME%TYPE;
+ 11  sWhere TEACH.T_WHERE%TYPE;
+ 12  nTotUnit NUMBER := 0;
+ 13  CURSOR cur (sStudentId VARCHAR2, nYear NUMBER, nSemester NUMBER) IS
+ 14  SELECT e.c_id, c.c_name, e.c_id_no, c.c_unit, t.t_time, t.t_where
+ 15  FROM enroll e, course c, teach t
+ 16  WHERE e.s_id = sStudentId and e.e_year = nYear
+ 17  and e.e_semester = nSemester
+ 18  and t.t_year = nYear and t.t_semester = nSemester
+ 19  and e.c_id = c.c_id and e.c_id_no = c.c_id_no
+ 20  and c.c_id = t.c_id and c.c_id_no = t.c_id_no
+ 21  ORDER BY 5;
+ 22  BEGIN
+ 23  OPEN cur(sStudentId, nYear, nSemester);
+ 24  DBMS_OUTPUT.put_line('#');
+ 25  DBMS_OUTPUT.put_line(TO_CHAR(nYear) || '년도 ' || TO_CHAR(nSemester) ||
+ 26   '학기의 ' || sStudentId || '님의 수강신청 시간표입니다. ');
+ 27  
+ 28  LOOP
+ 29  FETCH cur INTO sId, sName, nIdNo, nUnit, nTime, sWhere;
+ 30  EXIT WHEN cur%NOTFOUND;
+ 31  DBMS_OUTPUT.put_line('교시: ' || TO_CHAR(nTime) || ', 과목번호: ' || sId ||
+ 32  ', 과목명: ' || sName || ', 분반: ' || TO_CHAR(nIdNo) || ', 학점 : ' || TO_CHAR(nUnit)
+ 33  || ', 장소: ' || sWhere);
+ 34  nTotUnit := nTotUnit + nUnit;
+ 35  END LOOP;
+ 36  DBMS_OUTPUT.put_line('총 ' || TO_CHAR(cur%ROWCOUNT) || ' 과목과 총'
+ 37  || TO_CHAR(nTotUnit) || '학점을 신청하였습니다.');
+ 38  CLOSE cur;
+ 39  END;
+ 40  /
+
+프로시저가 생성되었습니다.
+
+SQL> 
+SQL> spool off

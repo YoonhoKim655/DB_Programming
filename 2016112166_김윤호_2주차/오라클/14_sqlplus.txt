@@ -1,0 +1,16 @@
+SQL> SELECT ShipperName, SHIPMENT.ShipmentID, DepartureDate, Value
+  2  FROM SHIPMENT, SHIPMENT_ITEM
+  3  WHERE SHIPMENT.ShipmentID = SHIPMENT_ITEM.ShipmentID
+  4  AND ItemID IN
+  5  (SELECT ItemID
+  6  FROM ITEM
+  7  WHERE City = 'Singapore')
+  8  ORDER BY ShipperName, DepartureDate DESC;
+
+SHIPPERNAME                         SHIPMENTID DEPARTUR      VALUE              
+----------------------------------- ---------- -------- ----------              
+International                                4 15/06/02       1200              
+International                                4 15/06/02       4500              
+International                                4 15/06/02       9500              
+
+SQL> spool off;

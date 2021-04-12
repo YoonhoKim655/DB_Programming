@@ -1,0 +1,13 @@
+mysql> SELECT City, Store
+    -> FROM ITEM
+    -> GROUP BY City, Store;
++-----------+-------------------+
+| City      | Store             |
++-----------+-------------------+
+| Manila    | Eastern Treasures |
+| Singapore | Jade Antiques     |
+| Singapore | Eastern Sales     |
++-----------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> \t

@@ -1,0 +1,30 @@
+INSERT INTO SHIPMENT VALUES(1,'ABC Trans-Oceanic', 2008651, '2014-12-10', '2015-03-15', 15000.00);
+INSERT INTO SHIPMENT VALUES(2,'ABC Trans-Oceanic', 2009012, '2015-01-10', '2015-03-20', 12000.00);
+INSERT INTO SHIPMENT VALUES(3,'Worldwide', 49100300, '2015-05-05', '2015-07-17', 20000.00);
+INSERT INTO SHIPMENT VALUES(4,'International', 399400, '2015-06-02', '2015-07-17', 17500.00 );
+INSERT INTO SHIPMENT VALUES(5,'Worldwide', 84899440, '2015-07-10', '2015-07-18', 25000.00);
+INSERT INTO SHIPMENT VALUES(6,'International', 488955, '2015-08-05', '2015-09-11', 18000.00);
+SELECT * FROM SHIPMENT;
+
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+
+(1俺 青 利侩凳)
+ShipmentID  ShipperName                         ShipperInvoiceNumber DepartureDate    ArrivalDate      InsuredValue  
+----------- ----------------------------------- -------------------- ---------------- ---------------- --------------
+          1 ABC Trans-Oceanic                                2008651       2014-12-10       2015-03-15       15000.00
+          2 ABC Trans-Oceanic                                2009012       2015-01-10       2015-03-20       12000.00
+          3 Worldwide                                       49100300       2015-05-05       2015-07-17       20000.00
+          4 International                                     399400       2015-06-02       2015-07-17       17500.00
+          5 Worldwide                                       84899440       2015-07-10       2015-07-18       25000.00
+          6 International                                     488955       2015-08-05       2015-09-11       18000.00
+
+(6俺 青 利侩凳)

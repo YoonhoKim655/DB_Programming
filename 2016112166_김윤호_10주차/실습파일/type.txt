@@ -1,0 +1,21 @@
+SQL> Declare
+  2  v_empno emp.empno%TYPE := 7900;
+  3  v_ename emp.ename%TYPE;
+  4  v_sal emp.sal%TYPE;
+  5  Begin
+  6  select empno, ename, sal
+  7  into v_empno, v_ename, v_sal
+  8  from emp
+  9  where empno = v_empno;
+ 10  DBMS_OUTPUT.PUT_LINE('사원번호 : ' || v_empno);
+ 11   DBMS_OUTPUT.PUT_LINE('사원번호 : ' || v_ename);
+ 12   DBMS_OUTPUT.PUT_LINE('사원번호 : ' || v_sal);
+ 13  End;
+ 14  /
+사원번호 : 7900                                                                 
+사원번호 : JAMES                                                                
+사원번호 : 950                                                                  
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

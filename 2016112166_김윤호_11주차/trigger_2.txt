@@ -1,0 +1,26 @@
+SQL> CREATE OR REPLACE trigger sum_trigger
+  2  BEFORE INSERT OR UPDATE ON emp
+  3  FOR EACH ROW
+  4  DECLARE
+  5  avg_sal NUMBER;
+  6  BEGIN
+  7  SELECT ROUND(AVG(sal),3)
+  8  INTO avg_sal
+  9  FROM emp;
+ 10  DBMS_OUTPUT.PUT_LINE('급여 평균 : ' || avg_sal);
+ 11  END;
+ 12  /
+
+트리거가 생성되었습니다.
+
+SQL> INSERT INTO emp(empno, ename, job, hiredate, sal)
+  2  VALUES(1000, 'LION', 'SALES', SYSDATE, 5000);
+급여 평균 : 2071.967                                                            
+
+1 개의 행이 만들어졌습니다.
+
+SQL> COMMIT;
+
+커밋이 완료되었습니다.
+
+SQL> spool off;

@@ -1,0 +1,15 @@
+SQL> DECLARE i NUMBER := 0;
+  2  nSum NUMBER := 0;
+  3  BEGIN
+  4  WHILE i < 100 LOOP
+  5  i := i + 1;
+  6  nSum := nSum + i;
+  7  END LOOP;
+  8  DBMS_OUTPUT.PUT_LINE('1~100까지의 합 : '||TO_CHAR(nSum));
+  9  END;
+ 10  /
+1~100까지의 합 : 5050                                                           
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spool off;

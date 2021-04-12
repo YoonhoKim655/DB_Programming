@@ -1,0 +1,15 @@
+SQL> select S.sname, S.age
+  2  from sailors S
+  3  where not exists
+  4  ((select B.bid
+  5  from boats B)
+  6  minus
+  7  (select R.bid
+  8  from reserves R
+  9  where S.sid = R.sid));
+
+SNAME                                                     AGE                                                                                         
+-------------------------------------------------- ----------                                                                                         
+Dustin                                                   45.2                                                                                         
+
+SQL> spool off;
